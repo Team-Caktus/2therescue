@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'petrescue',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

@@ -2,12 +2,14 @@ from django.db import models
 from django.utils import timezone
 from django.forms import ModelForm
 from django.contrib.auth.models import AbstractUser
+# from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 
 class CustomUser(AbstractUser):
     
     def __repr__(self):
+        
         return f"<User username={self.username}>"
 
     def __str__(self):
@@ -23,6 +25,23 @@ class Tag(models.Model):
         return self.tag
 
 
+class Applicant(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=150)
+    # phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
+    email = models.EmailField(max_length=150)
+    foster_adopt = models.BooleanField(default=False)
+
+
+class Agency(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=150)
+    # phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
+    email = models.EmailField(max_length=150)
+    # logo = models.ImageField() do we use wagtail
+
+
+
 class Pet(models.Model):
     name = models.CharField(max_length=50)
     breed = models.CharField(max_length=250)
@@ -33,7 +52,7 @@ class Pet(models.Model):
     # photo = image field(wagtail)
     # vet_record = models.(any wagtail solution?) as a file? or as an image? will this be its own model
     # petrescuer = this will be the foreign key to the petrescuer
-    # adopter = models.ForeignKey(to="pet", on_delete=models.CASCADE, related_name="adopter")
+    # applicant = models.ForeignKey(to="pet", on_delete=models.CASCADE, related_name="applicant")
     # agency = models.ForeignKey(to="pet", on_delete=models.CASCADE, related_name="agency")
     spay_neuter = models.BooleanField(default=False)
     # class AdoptionStatus(models.TextChoices):
@@ -54,7 +73,7 @@ class Pet(models.Model):
 
 #date updated vs date created how to write the "function"
 #models planned
-#-petresquer(user/enduser) will have unique id
+#-petrescuer(user/enduser) will have unique id
 #-agency
 #-admin/user(for agency) will have unique id
 # need to research the class inside class for the adoptionStatus 
