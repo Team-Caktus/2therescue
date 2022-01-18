@@ -9,6 +9,9 @@ django-environ = "*"
 wagtail = "*"
 django-phonenumber-field = "*"
 phonenumbers = "*"
+psycopg2-binary = "*"
+django-on-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 
