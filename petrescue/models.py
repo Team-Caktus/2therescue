@@ -1,3 +1,4 @@
+import email
 from django.db import models
 from django.utils import timezone
 from django.forms import ModelForm
@@ -20,9 +21,22 @@ class Tag(models.Model):
     tag = models.CharField(max_length=100, unique=True)
 # size
 # age group
-# 
+# sex of dog
     def __str__(self):
         return self.tag
+
+
+class Foster(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    address = models.CharField(max_length=150)
+    email = models.EmailField(max_length=150)
+    # phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
+    num_of_adults = models.IntegerField()
+    ages_of_children = models.CharField(max_length=50)
+    any_other_pets = models.BooleanField(default=False)
+
+
 
 
 class Applicant(models.Model):
@@ -38,7 +52,7 @@ class Agency(models.Model):
     address = models.CharField(max_length=150)
     # phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
     email = models.EmailField(max_length=150)
-    # logo = models.ImageField() do we use wagtail
+    # logo = models.ImageField() 
 
 
 
@@ -49,7 +63,7 @@ class Pet(models.Model):
     size = models.CharField(max_length=50)
     description = models.TextField(max_length=500, null=True)
     vac_status = models.BooleanField(default=False)
-    # photo = image field(wagtail)
+    image_url = models.CharField(max_length=250, blank=True, null=True)
     # vet_record = models.(any wagtail solution?) as a file? or as an image? will this be its own model
     # petrescuer = this will be the foreign key to the petrescuer
     # applicant = models.ForeignKey(to="pet", on_delete=models.CASCADE, related_name="applicant")
