@@ -79,7 +79,7 @@ ROOT_URLCONF = 'rescue.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/"templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -164,5 +164,5 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 # this code causes error, but was on install list for heroku
-# django_on_heroku.settings(locals()) 
-# del DATABASES['default']['OPTIONS']['sslmode']
+django_on_heroku.settings(locals()) 
+del DATABASES['default']['OPTIONS']['sslmode']
