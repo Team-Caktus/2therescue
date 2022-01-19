@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'taggit',
     'petrescue',
     'phonenumber_field',
-    # 'django-on-heroku',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +104,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+#  "default": env.db(), possible need this instead
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -164,5 +163,6 @@ WAGTAILSEARCH_BACKENDS = {
     }
 }
 
+# this code causes error, but was on install list for heroku
 # django_on_heroku.settings(locals()) 
 # del DATABASES['default']['OPTIONS']['sslmode']
