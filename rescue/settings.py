@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'taggit',
     'petrescue',
     'phonenumber_field',
-    'django-on-heroku',
+    # 'django-on-heroku',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -163,5 +164,5 @@ WAGTAILSEARCH_BACKENDS = {
     }
 }
 
-django_on_heroku.settings(locals()) 
-del DATABASES['default']['OPTIONS']['sslmode']
+# django_on_heroku.settings(locals()) 
+# del DATABASES['default']['OPTIONS']['sslmode']
