@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 def homepage(request):
-    return render(request, "petrescue/homepage.html")
+    pets=["Graham", "Trixie", "Gigi", "Kingsley"]
+    return render(request, "petrescue/homepage.html", {"pets": pets})

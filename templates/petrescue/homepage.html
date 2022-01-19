@@ -1,1 +1,13 @@
-<h1>I am the Hooomepage!</h1>
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with Django and Webpack</title>
+  </head>
+  <body>
+    <div id="root">
+    </div>
+    {{ pets|json_script:"pets" }}
+    <script src="{% static 'js/index-bundle.js' %}"></script>
+  </body>
+</html>
