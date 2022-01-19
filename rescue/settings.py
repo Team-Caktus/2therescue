@@ -13,11 +13,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import environ
 import os
+import django_on_heroku
 
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,6 +61,7 @@ INSTALLED_APPS = [
     'taggit',
     'petrescue',
     'phonenumber_field',
+    'django-on-heroku',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = os.path.join(BASE_DIR, '/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -152,10 +155,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-WAGTAIL_SITE_NAME = 'My Example Site'
+WAGTAIL_SITE_NAME = '2TheRescue'
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
         'BACKEND': 'wagtail.search.backends.database',
     }
 }
+
+django_on_heroku.settings(locals()) 
+del DATABASES['default']['OPTIONS']['sslmode']
