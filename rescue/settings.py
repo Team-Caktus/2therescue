@@ -79,7 +79,7 @@ ROOT_URLCONF = 'rescue.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/"templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,6 +144,9 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -164,5 +167,5 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 # this code causes error, but was on install list for heroku
-# django_on_heroku.settings(locals()) 
-# del DATABASES['default']['OPTIONS']['sslmode']
+django_on_heroku.settings(locals()) 
+del DATABASES['default']['OPTIONS']['sslmode']
