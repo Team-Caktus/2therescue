@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from .serializers import FosterSerializer
+from .serializers import FosterSerializer, PetSerializer
 from rest_framework import generics
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveDestroyAPIView
-from .models import Foster
+from .models import Foster, Pet
 
 
 
@@ -29,9 +29,33 @@ class EditFoster(RetrieveUpdateDestroyAPIView):
     queryset = Foster.objects.all()
     serializer_class = FosterSerializer
 
-class Deletfoster(RetrieveDestroyAPIView):
+class Deletefoster(RetrieveDestroyAPIView):
     queryset = Foster.objects.all()
     serializer_class = FosterSerializer
 
 class NewFoster(CreateAPIView):
     serializer_class = FosterSerializer
+
+class PetList(generics.ListCreateAPIView):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer
+
+
+class PetDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer
+
+class PetFoster(CreateAPIView):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer
+
+class EditPet(RetrieveUpdateDestroyAPIView):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer
+
+class DeletePet(RetrieveDestroyAPIView):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer
+
+class NewPet(CreateAPIView):
+    serializer_class = PetSerializer

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Foster, Tag
+from .models import Foster, Tag, Pet
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -20,3 +20,23 @@ class FosterSerializer(serializers.ModelSerializer):
         'ages_of_children',
         'any_other_pets',
         )
+
+
+class PetSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Pet
+        fields = ('breed',
+        'age',
+        'size',
+        'description',
+        'vac_status',
+        'image_url',
+        'spay_neuter',
+        'health_notes',
+        'tags',
+        'notes',
+        'date_created',
+        'date_updated',
+        )
+

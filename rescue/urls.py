@@ -35,7 +35,12 @@ urlpatterns = [
     path('foster/Foster_list/', petrescue_views.FosterList.as_view(), name='Foster_list'),
     path('foster/edit/<int:pk>/', petrescue_views.EditFoster.as_view(), name='edit_Foster'),
     path('foster/Foster_detail/<int:pk>/', petrescue_views.FosterDetail.as_view(), name='Foster_detail'),
-    path('foster/delete_Foster/<int:pk>', petrescue_views.Deletfoster.as_view(), name='delete_Foster'),
-    path('foster/create/',petrescue_views.NewFoster.as_view(), name="create_Foster")
+    path('foster/delete_Foster/<int:pk>', petrescue_views.Deletefoster.as_view(), name='delete_Foster'),
+    path('foster/create/',petrescue_views.NewFoster.as_view(), name="create_Foster"),
+    path('pet/<int:pk>/', petrescue_views.PetDetail.as_view(), name='pet_detail'),
+    path('pet/new/', petrescue_views.NewPet.as_view(), name='add_pet'),
+    path('pet/pet_list/', petrescue_views.PetList.as_view(), name='pet_list'),
+    path('pet/edit/<int:pk>/', petrescue_views.EditPet.as_view(), name='edit_pet'),
+    path('pet/delete_pet/<int:pk>', petrescue_views.DeletePet.as_view(), name='delete_pet'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
