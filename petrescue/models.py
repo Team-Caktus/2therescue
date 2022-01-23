@@ -29,30 +29,51 @@ class Tag(models.Model):
 class Foster(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    address = models.CharField(max_length=150)
+    street_line_1 = models.CharField(max_length=255, blank=False, null=True)
+    street_line_1 = models.CharField(max_length=255, blank=False, null=True)
+    city = models.CharField(max_length=80, blank=False, null=True)
+    state = models.CharField(max_length=80, blank=False, null=True)
+    zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
     # phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
     num_of_adults = models.IntegerField()
     ages_of_children = models.CharField(max_length=50)
     any_other_pets = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.foster
+
 
 
 
 class Applicant(models.Model):
     name = models.CharField(max_length=100)
-    address = models.CharField(max_length=150)
+    street_line_1 = models.CharField(max_length=255, blank=False, null=True)
+    street_line_1 = models.CharField(max_length=255, blank=False, null=True)
+    city = models.CharField(max_length=80, blank=False, null=True)
+    state = models.CharField(max_length=80, blank=False, null=True)
+    zipcode = models.IntegerField(default=False)
     # phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
     email = models.EmailField(max_length=150)
     foster_adopt = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.applicant
+
 
 class Agency(models.Model):
     name = models.CharField(max_length=200)
-    address = models.CharField(max_length=150)
+    street_line_1 = models.CharField(max_length=255, blank=False, null=True)
+    street_line_1 = models.CharField(max_length=255, blank=False, null=True)
+    city = models.CharField(max_length=80, blank=False, null=True)
+    state = models.CharField(max_length=80, blank=False, null=True)
+    zipcode = models.IntegerField(default=False)
     # phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
     email = models.EmailField(max_length=150)
-    # logo = models.ImageField() 
+    # logo = models.ImageField()
+
+    def __str__(self):
+        return self.agency
 
 
 
