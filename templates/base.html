@@ -5,11 +5,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Title</title>
-<!-- {% block javascript %} {% endblock javascript %} -->
-
+  <title>{{ agency.name }}</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" />
 </head>
 <body>
-    <h1>2TheRescueeee!</h1>
+    <header><h1>{{ agency.name }}</h1></header>
+    <div id="root"></div>
+        {{ pets|json_script:"pets" }}
+        <script src="{% static 'js/index-bundle.js' %}"></script>
+      </body>
+    </html>
+    
 </body>
 </html>
