@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Foster, Tag, Pet
+from .models import Foster, Tag, Pet, Applicant, Agency
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -39,4 +39,36 @@ class PetSerializer(serializers.ModelSerializer):
         'date_created',
         'date_updated',
         )
+
+
+
+class ApplicantSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Applicant
+        fields = ('name',
+        'street_line_1',
+        'street_line_2',
+        'city',
+        'state',
+        'zipcode',
+        'email',
+        'foster_adopt',
+        )
+
+
+class AgencySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Agency
+        fields = ('name',
+        'street_line_1',
+        'street_line_2',
+        'city',
+        'state',
+        'zipcode',
+        'email',
+        )
+
+
 
