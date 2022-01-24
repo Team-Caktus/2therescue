@@ -5,6 +5,14 @@ from django.utils import timezone
 from django.forms import ModelForm
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
+
+
+from modelcluster.fields import ParentalKey
+from wagtail.core.models import Page, Orderable
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 # Create your models here.
 
 
@@ -36,18 +44,20 @@ class Foster(models.Model):
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
+    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False, default='')
     num_of_adults = models.IntegerField()
     ages_of_children = models.CharField(max_length=50)
     any_other_pets = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.foster
+        return self.first_name
 
 
 
 
 class Applicant(models.Model):
     name = models.CharField(max_length=100)
+    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False, default='')
     street_line_1 = models.CharField(max_length=255, blank=False, null=True)
     street_line_2 = models.CharField(max_length=255, blank=False, null=True)
     city = models.CharField(max_length=80, blank=False, null=True)
@@ -57,11 +67,12 @@ class Applicant(models.Model):
     foster_adopt = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.applicant
+        return self.name
 
 
 class Agency(models.Model):
     name = models.CharField(max_length=200)
+    phoneNumber = PhoneNumberField(unique=True, null=False, blank=False, default='')
     street_line_1 = models.CharField(max_length=255, blank=False, null=True)
     street_line_2 = models.CharField(max_length=255, blank=False, null=True)
     city = models.CharField(max_length=80, blank=False, null=True)
@@ -71,7 +82,7 @@ class Agency(models.Model):
     # logo = models.ImageField()
 
     def __str__(self):
-        return self.agency
+        return self.name
 
 class Pet(models.Model):
 
@@ -88,16 +99,18 @@ class Pet(models.Model):
     vac_status = models.BooleanField(default=False)
     image_url = models.CharField(max_length=250, blank=True, null=True)
     spay_neuter = models.BooleanField(default=False)
-    health_notes = models.TextField(max_length=500, null=True)
+    health_notes = models.TextField(max_length=500, blank=True, default='')
     tags = models.ManyToManyField(to=Tag, related_name="pets", blank=True)
-    notes = models.TextField(max_length=500, null=True)
+    notes = models.TextField(max_length=500, blank=True, default='')
     date_created = models.DateTimeField(default=timezone.now, null=True)
     date_updated = models.DateTimeField(default=timezone.now, null=True)
     status = models.CharField(max_length=25, choices=options, default='available')
 
 
     def __str__(self):
-        return self.title
+        return self.name
+
+
 
 #date updated vs date created how to write the "function"
 #models planned

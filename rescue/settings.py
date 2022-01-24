@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'taggit',
     'petrescue',
     'phonenumber_field',
+    'wagtail.contrib.modeladmin',
     'rest_framework',
 ]
 
