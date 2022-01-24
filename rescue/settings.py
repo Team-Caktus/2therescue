@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'petrescue',
     'phonenumber_field',
     'wagtail.contrib.modeladmin',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
