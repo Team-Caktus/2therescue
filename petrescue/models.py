@@ -5,6 +5,14 @@ from django.utils import timezone
 from django.forms import ModelForm
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
+
+
+from modelcluster.fields import ParentalKey
+from wagtail.core.models import Page, Orderable
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 # Create your models here.
 
 
@@ -36,6 +44,7 @@ class Foster(models.Model):
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
+    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
     num_of_adults = models.IntegerField()
     ages_of_children = models.CharField(max_length=50)
     any_other_pets = models.BooleanField(default=False)
@@ -48,6 +57,7 @@ class Foster(models.Model):
 
 class Applicant(models.Model):
     name = models.CharField(max_length=100)
+    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
     street_line_1 = models.CharField(max_length=255, blank=False, null=True)
     street_line_2 = models.CharField(max_length=255, blank=False, null=True)
     city = models.CharField(max_length=80, blank=False, null=True)
@@ -62,6 +72,7 @@ class Applicant(models.Model):
 
 class Agency(models.Model):
     name = models.CharField(max_length=200)
+    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False)
     street_line_1 = models.CharField(max_length=255, blank=False, null=True)
     street_line_2 = models.CharField(max_length=255, blank=False, null=True)
     city = models.CharField(max_length=80, blank=False, null=True)
@@ -98,6 +109,8 @@ class Pet(models.Model):
 
     def __str__(self):
         return self.title
+
+
 
 #date updated vs date created how to write the "function"
 #models planned
