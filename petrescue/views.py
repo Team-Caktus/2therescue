@@ -45,7 +45,7 @@ class PetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
 
-class PetFoster(CreateAPIView):
+class NewFoster(CreateAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
 
