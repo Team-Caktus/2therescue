@@ -12,6 +12,7 @@ phonenumbers = "*"
 psycopg2-binary = "*"
 django-on-heroku = "*"
 gunicorn = "*"
+django-address = "*"
 
 [dev-packages]
 
