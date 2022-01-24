@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from .serializers import FosterSerializer, PetSerializer
+from .serializers import FosterSerializer, PetSerializer, AgencySerializer, ApplicantSerializer
 from rest_framework import generics
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveDestroyAPIView
-from .models import Foster, Pet
+from .models import Foster, Pet, Applicant, Agency
+from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 
 
 
@@ -59,3 +61,31 @@ class DeletePet(RetrieveDestroyAPIView):
 
 class NewPet(CreateAPIView):
     serializer_class = PetSerializer
+
+
+class ApplicantViewSet(ModelViewSet):
+    queryset = Applicant.objects.all()
+    serializer_class = ApplicantSerializer
+    permission_classes = []
+
+    def get_serializer_class(self):
+        if self.action in ["list"]:
+          return ApplicantSerializer
+        return super().get_serializer_class()
+
+
+class AgencyViewSet(ModelViewSet):
+    queryset = Agency.objects.all()
+    serializer_class = AgencySerializer
+    permission_classes = []
+
+    def get_serializer_class(self):
+        if self.action in ["list"]:
+           return AgencySerializer
+        return super().get_serializer_class()
+
+
+
+
+
+
