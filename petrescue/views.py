@@ -2,15 +2,17 @@ from django.shortcuts import render
 from .serializers import FosterSerializer, PetSerializer
 from rest_framework import generics
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveDestroyAPIView
-from .models import Foster, Pet
+from .models import Foster, Pet, Agency
 
 
 
 # Create your views here.
 def homepage(request):
-    pets=["Graham", "Trixie", "Gigi", "Kingsley"]
-    return render(request, "petrescue/homepage.html", {"pets": pets})
-
+    # pets=["Graham", "Trixie", "Gigi", "Kingsley"]
+    # return render(request, "petrescue/homepage.html", {"pets": pets})
+    pets = Pet.objects.all()
+    return render(request, "petrescue/homepage.html", {
+        "pets": pets })
 
 class FosterList(generics.ListCreateAPIView):
     queryset = Foster.objects.all()
