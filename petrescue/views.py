@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .serializers import FosterSerializer, PetSerializer, AgencySerializer, ApplicantSerializer
 from rest_framework import generics
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveDestroyAPIView
@@ -9,10 +9,6 @@ from rest_framework.viewsets import ModelViewSet
 
 
 # Create your views here.
-def homepage(request):
-    pets=["Graham", "Trixie", "Gigi", "Kingsley"]
-    return render(request, "petrescue/homepage.html", {"pets": pets})
-
 
 class FosterList(generics.ListCreateAPIView):
     queryset = Foster.objects.all()
@@ -42,10 +38,19 @@ class PetList(generics.ListCreateAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
 
+    def list_pets(request):
+        pets = Pet.objects.all()
+        return render(request, "petrescue/homepage.html", {"pets": pets})
+
 
 class PetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
+
+    def get_pet(request, pk):
+        pet = get_object_or_404(Pet,pk=pk)
+        return render(request, "petrescue/pet_detail.html", {"pet": pet})
+
 
 class NewFoster(CreateAPIView):
     queryset = Pet.objects.all()

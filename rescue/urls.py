@@ -13,18 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from unicodedata import name
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.conf.urls.static import static
-from petrescue import views as petrescue_views
 from petrescue import views as api_views
+from petrescue.views import PetList
+from petrescue import views as petrescue_views
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-
 
 router = DefaultRouter(trailing_slash=False)
 router.register("agency", api_views.AgencyViewSet, basename="agency")
@@ -33,10 +34,12 @@ router.register("applicant", api_views.ApplicantViewSet, basename="applicant")
 
 urlpatterns = [
     path("api/", include(router.urls)),
+    path("api/pets/", api_views.PetList.as_view(), name="pets"),
+    path("pets/", api_views.PetList.list_pets, name="list_pets"),
+    path("pets/<int:pk>/", api_views.PetDetail.get_pet, name="get_pet"),
     # path('', petrescue_views.homepage, name='home'),
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('pages/', include(wagtail_urls)),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
