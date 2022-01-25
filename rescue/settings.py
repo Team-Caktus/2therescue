@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('86eq(64mq$5$2xuzq+2$e=*i2jjjqs)pkcbxrqni5965j7@joy')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
@@ -167,7 +167,6 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'wagtail.search.backends.database',
     }
 }
-
-# this code causes error, but was on install list for heroku
+import django_on_heroku
 django_on_heroku.settings(locals()) 
 del DATABASES['default']['OPTIONS']['sslmode']
