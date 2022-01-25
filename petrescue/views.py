@@ -9,6 +9,13 @@ from rest_framework.viewsets import ModelViewSet
 
 
 # Create your views here.
+<<<<<<< HEAD
+=======
+def homepage(request):
+    pets=Pet.objects.all
+    return render(request, "petrescue/homepage.html", {"pets": pets})
+
+>>>>>>> main
 
 class FosterList(generics.ListCreateAPIView):
     queryset = Foster.objects.all()

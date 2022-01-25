@@ -35,9 +35,8 @@ router.register("applicant", api_views.ApplicantViewSet, basename="applicant")
 urlpatterns = [
     path("api/", include(router.urls)),
     path("api/pets/", api_views.PetList.as_view(), name="pets"),
-    path("pets/", api_views.PetList.list_pets, name="list_pets"),
+    path("", api_views.PetList.list_pets, name="list_pets"),
     path("pets/<int:pk>/", api_views.PetDetail.get_pet, name="get_pet"),
-    # path('', petrescue_views.homepage, name='home'),
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
