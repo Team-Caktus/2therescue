@@ -167,6 +167,7 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'wagtail.search.backends.database',
     }
 }
-import django_on_heroku
+
+# this code causes error, but was on install list for heroku
 django_on_heroku.settings(locals()) 
 del DATABASES['default']['OPTIONS']['sslmode']
