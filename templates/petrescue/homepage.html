@@ -1,13 +1,15 @@
+{% extends "base.html" %}
 {% load static %}
-<!doctype html>
-<html>
-  <head>
-    <title>Getting Started with Django and Webpack</title>
-  </head>
-  <body>
-    <div id="root">
-    </div>
-    {{ pets|json_script:"pets" }}
-    <script src="{% static 'js/index-bundle.js' %}"></script>
-  </body>
-</html>
+{% block content %}
+<div class="maincontainer">
+  {% for pet in pets %}
+  <div class="pets-container">
+    <div class="pet-card">
+      <a href="{% url 'pet_detail' pk=pet.pk %}"><div class="pet"><span style="font-size: 25px;">{{ pet.name }}</span></div></a></div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+
+
