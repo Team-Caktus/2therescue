@@ -1,0 +1,35 @@
+body {
+    background: black;
+    font-family: sans-serif;
+    color: white;
+}
+
+.maincontainer {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.pets-container   {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* margin: 15px;
+    margin-bottom: 50px; */
+}
+
+.pet-card   {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 25px;
+    border-width: 20px;
+    max-width: 350px;
+    text-align: center;
+    align-content: center;
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    transition: all 1.5s ease;
+    cursor: pointer;
+}

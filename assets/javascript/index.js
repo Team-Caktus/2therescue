@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from "react-dom";
+// import React from 'react';
+// import ReactDOM from "react-dom";
 
-const jsonData = JSON.parse(document.querySelector('#cards').textContent)
+// const jsonData = JSON.parse(document.querySelector('#cards').textContent)
 
-ReactDOM.render(
-  <h1>Hello {jsonData[0]}!</h1>,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <h1>Hello {jsonData[0]}!</h1>,
+//   document.getElementById('root')
+// );

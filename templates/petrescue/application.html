@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ dog.name }} </h1>
+
+<div>
+  <form action="{% url 'pet_applicant' pk=pet.pk %}" method="POST">
+    {{ form.as_p }}
+    <div>
+      <button type="submit">Apply</button>
+      <a href="{% url 'home' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+</div>
+{% endif %}
+{% endblock %}
