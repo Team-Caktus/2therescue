@@ -11,12 +11,12 @@
 <body>
     <header><h1>2TheRescue!</h1>
     <nav>
-      <a href="/">Available Pets</a> |
-      <a href="/">About Us</a> |
-      <a href="/">Contact Us</a> |
+      <a href="{% url 'list_pets' %}">Available Pets</a> |
+      <a href="">About Us</a> |
+      <a href="">Contact Us</a> |
     </nav>
     </header>
-    <div id="root">{% block content %} {% endblock content %}</div>
+    {% block content %}{% endblock content %}
     <footer>
       <ul>
         <li>{{ agency.name }}</li>

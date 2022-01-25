@@ -4,13 +4,11 @@
 <div class="maincontainer">
   <h4>Click on a dog below for more details or to apply to adopt!</h4>
   {% for pet in pets %}
-  {{ pet.name }}
-
   <div class="pets-container">
     <div class="pet-card">
-      <a href="{% url 'get_pet' pk=pet.pk %}"><div class="pet"><span style="font-size: 25px;">{{ pet.name }}</span></div></a></div>
+      <a href="{% url 'get_pet' pk=pet.pk %}">
         <div class="pet-details">
-          <img src="{{ pet.image_url }}" />
+          <img src="https://via.placeholder.com/150" />
           <span style="font-size: 25px;">{{ pet.name }}</span>
         </div>
         </a>
