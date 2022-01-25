@@ -5,14 +5,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ agency.name }}</title>
+  <title>2therescue</title>
   <link rel="stylesheet" href="{% static 'css/index.css' %}" />
 </head>
 <body>
     <header><h1>2TheRescue!</h1>
-    <nav></nav>
+    <nav>
+      <a href="/">Available Pets</a> |
+      <a href="/">About Us</a> |
+      <a href="/">Contact Us</a> |
+    </nav>
     </header>
     <div id="root"></div>
+    <footer>
+      <ul>
+        <li>{{ agency.name }}</li>
+        <li>{{ agency.phoneNumber }}</li>
+      </ul>
+    </footer>
         <script src="{% static 'js/index-bundle.js' %}"></script>
       </body>
     </html>

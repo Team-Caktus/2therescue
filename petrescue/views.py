@@ -10,7 +10,7 @@ from rest_framework.viewsets import ModelViewSet
 
 # Create your views here.
 def homepage(request):
-    pets=["Graham", "Trixie", "Gigi", "Kingsley"]
+    pets=Pet.objects.all
     return render(request, "petrescue/homepage.html", {"pets": pets})
 
 
