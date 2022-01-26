@@ -31,7 +31,6 @@ class AppForm(forms.ModelForm):
                 'state',
                 'zipcode',
                 'email',
-                'foster_adopt',
         ]
         # name = forms.CharField(label='your_name', max_length=100)
         # phoneNumber = forms.IntegerField(label='phone')
