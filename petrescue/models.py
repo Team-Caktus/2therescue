@@ -97,7 +97,7 @@ class Pet(models.Model):
     size = models.CharField(max_length=50)
     description = models.TextField(max_length=500, null=True)
     vac_status = models.BooleanField(default=False)
-    image_url = models.CharField(max_length=250, blank=True, null=True)
+    pet_photo = models.ImageField(null=True, blank=True)
     spay_neuter = models.BooleanField(default=False)
     health_notes = models.TextField(max_length=500, blank=True, default='')
     tags = models.ManyToManyField(to=Tag, related_name="pets", blank=True)
