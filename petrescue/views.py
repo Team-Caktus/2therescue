@@ -5,6 +5,7 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView,
 from .models import Foster, Pet, Applicant, Agency
 from rest_framework import viewsets
 from rest_framework.viewsets import ModelViewSet
+from .forms import AppForm
 
 
 
@@ -70,7 +71,7 @@ class ApplicantViewSet(ModelViewSet):
 
     def get_serializer_class(self):
         if self.action in ["list"]:
-          return ApplicantSerializer
+            return ApplicantSerializer
         return super().get_serializer_class()
 
 
@@ -81,8 +82,15 @@ class AgencyViewSet(ModelViewSet):
 
     def get_serializer_class(self):
         if self.action in ["list"]:
-           return AgencySerializer
+            return AgencySerializer
         return super().get_serializer_class()
+
+
+def AppView(request):
+    context ={}
+    context['form']= AppForm()
+    return render(request, 'petrescue/application.html', {'form': form})
+
 
 
 

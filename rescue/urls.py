@@ -33,10 +33,11 @@ router.register("applicant", api_views.ApplicantViewSet, basename="applicant")
 
 urlpatterns = [
     path("api/", include(router.urls)),
-    # path('', petrescue_views.homepage, name='home'),
+    path('', petrescue_views.homepage, name='home'),
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('pages/', include(wagtail_urls)),
+    path('application/', petrescue_views.AppView, name='application')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
