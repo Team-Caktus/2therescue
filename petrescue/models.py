@@ -64,7 +64,6 @@ class Applicant(models.Model):
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
-    foster_adopt = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -79,6 +78,7 @@ class Agency(models.Model):
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
+    pet = models.ForeignKey('Pet', on_delete=models.CASCADE, default=None)
     # logo = models.ImageField()
 
     def __str__(self):
@@ -90,6 +90,11 @@ class Pet(models.Model):
         ('available', 'Available'),
         ('pending', 'Pending'),
         ('adopted', 'Adopted'),
+    )
+
+    animal_sex =(
+        ('male', 'M'),
+        ('female', 'F')
     )
     name = models.CharField(max_length=50)
     breed = models.CharField(max_length=250)
@@ -105,6 +110,7 @@ class Pet(models.Model):
     date_created = models.DateTimeField(default=timezone.now, null=True)
     date_updated = models.DateTimeField(default=timezone.now, null=True)
     status = models.CharField(max_length=25, choices=options, default='available')
+    animal_sex = models.CharField(max_length=25, choices=animal_sex, default='male')
 
 
     def __str__(self):
