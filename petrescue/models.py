@@ -78,7 +78,6 @@ class Agency(models.Model):
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
-    pet = models.ForeignKey('Pet', on_delete=models.CASCADE, default=None)
     # logo = models.ImageField()
 
     def __str__(self):
