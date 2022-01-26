@@ -30,13 +30,10 @@ class Deletefoster(RetrieveDestroyAPIView):
 class NewFoster(CreateAPIView):
     serializer_class = FosterSerializer
 
-class PetList(generics.ListCreateAPIView):
-    queryset = Pet.objects.all()
-    serializer_class = PetSerializer
 
-    def list_pets(request):
-        pets = Pet.objects.all()
-        return render(request, "petrescue/homepage.html", {"pets": pets})
+def list_pets(request):
+    pets = Pet.objects.all()
+    return render(request, "petrescue/homepage.html", {"pets": pets})
 
 def pet_detail(request, pk):
     pet = get_object_or_404(Pet,pk=pk)
