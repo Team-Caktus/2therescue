@@ -12,16 +12,13 @@
     <header><h1>2TheRescue!</h1>
     <nav>
       <a href="{% url 'list_pets' %}">Available Pets</a> |
-      <a href="">About Us</a> |
-      <a href="">Contact Us</a> |
+      <a href="">About Us</a>
     </nav>
     </header>
     {% block content %}{% endblock content %}
     <footer>
-      <ul>
-        <li>{{ agency.name }}</li>
-        <li>{{ agency.phoneNumber }}</li>
-      </ul>
+      <p>{{ agency.name }}</p>
+      <p>{{ agency.phoneNumber }}</p>
     </footer>
         <script src="{% static 'js/index-bundle.js' %}"></script>
       </body>

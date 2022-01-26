@@ -36,8 +36,8 @@ def list_pets(request):
     return render(request, "petrescue/homepage.html", {"pets": pets})
 
 def pet_detail(request, pk):
-    pet = get_object_or_404(Pet,pk=pk)
-    return render(request, "petrescue/pet_detail.html", {"pet": pet})
+    pet = get_object_or_404(Pet, pk=pk)
+    return render(request, "petrescue/pet_detail.html", {"pet": pet, "pk":pk})
 
 
 class NewFoster(CreateAPIView):

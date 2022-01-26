@@ -8,15 +8,17 @@
     <div class="pet-card">
       <a href="{% url 'get_pet' pk=pet.pk %}">
         <div class="pet-details">
-          <img src="https://via.placeholder.com/150" />
-          <span style="font-size: 25px;">{{ pet.name }}</span>
+          <img class="homepage_img" src="media/{{ pet.pet_photo }}" />
+          <span style="font-size: 25px;">{{ pet.name }}</span></a>
+          <ul>
+            <li>Age: {{ pet.age }}</li>
+          </ul>
         </div>
-        </a>
+      </div>
     </div>
   </div>
   {% endfor %}
 </div>
 {% endblock %}
-
 
 

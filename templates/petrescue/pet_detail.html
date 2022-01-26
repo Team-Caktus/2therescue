@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="maincontainer">
-    <img src="{{ pet.image_url }}" />
+    <div class="pet_detil"><img src="media/{{ pet.pet_photo }}" />
     <h3>{{ pet.name }}</h3>
     <p>Breed: {{ pet.breed }}</p>
     <p>Age: {{ pet.age }}</p>
-    <p>{{ pet.size }}</p>
-    <!-- {% for tag in tags %}{{ tag.tag }}{% endfor %} -->
+    <p>Weight: {{ pet.size }}</p>
+    <div class="tags">
+    {% for tag in tags %}
+        <p>{{ tag.tag }}</p>
+    {% endfor %}
+    </div>
     <p>{{ pet.description }}</p>
     <!-- {{ pet.vac_status }} -->
     <!-- {{ pet.spay_neuter }} -->
     <p>Date added: {{ pet.date_created }}</p>
+    </div>
     <a href="" class="button">Apply to Adopt!</a>
 </div>
 {% endblock %}
