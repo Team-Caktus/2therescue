@@ -32,7 +32,6 @@ router.register("applicant", petrescue_views.ApplicantViewSet, basename="applica
 
 urlpatterns = [
     path("api/", include(router.urls)),
-    path('', petrescue_views.homepage, name='home'),
     path("", petrescue_views.list_pets, name="list_pets"),
     path("pets/<int:pk>/", petrescue_views.pet_detail, name="get_pet"),
     path('admin/', admin.site.urls),
