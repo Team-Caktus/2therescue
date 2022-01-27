@@ -61,3 +61,10 @@ def AppView(request):
         return redirect(to="application_submitted")
 
     return render(request, 'petrescue/application.html', {'form': form})
+
+
+
+
+
+
+
