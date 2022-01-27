@@ -25,18 +25,14 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-router = DefaultRouter(trailing_slash=False)
-router.register("agency", petrescue_views.AgencyViewSet, basename="agency")
-router.register("applicant", petrescue_views.ApplicantViewSet, basename="applicant")
 
 
 urlpatterns = [
-    path("api/", include(router.urls)),
     path("", petrescue_views.list_pets, name="list_pets"),
     path("pets/<int:pk>/", petrescue_views.pet_detail, name="get_pet"),
+    path("agency/<int:pk>/", petrescue_views.agency_detail, name="agency_detail"),
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path('pages/', include(wagtail_urls)),
     path('application/', petrescue_views.AppView, name='application')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
