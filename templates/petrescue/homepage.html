@@ -4,20 +4,25 @@
   <p class="lead">Click on a dog below for more details or to apply to adopt!</p>
   <ul class="list-unstyled list-inline">
     {% for pet in pets %}
-    <li class="list-inline-item"><div class="card" style="width: 18rem;">
-    <a href="{% url 'get_pet' pk=pet.pk %}"><img src="media/{{ pet.pet_photo }}" class="card-img-top img-thumbnail" alt="photo-of-{{pet.name}}"></a>
+    <li class="list-inline-item">
+      <a href="{% url 'get_pet' pk=pet.pk %}"><div class="card homepage_card">
+    <img src="{{ pet.pet_photo.url }}" class="card-img-top img-thumbnail homepage_img" alt="photo-of-{{pet.name}}">
     <div class="card-body">
-      <h5 class="card-title"><a href="{% url 'get_pet' pk=pet.pk %}">{{ pet.name }}</a></h5>
-          <ul class="list-unstyled">
-            <li>Age: {{ pet.age }}</li>
-            <li>Sex: {{ pet.animal_sex }}</li>
-            <li>Size: {{ pet.size }}</li>
-            <li>Breed: {{ pet.breed }}</li>
-          </ul>
+      <h5 class="card-title">
+        <a href="{% url 'get_pet' pk=pet.pk %}">{{ pet.name }}</a></h5>
+          <dl class="row">
+            <dt class="col-sm-3">Age</dt>
+            <dd class="col-sm-9">{{ pet.age }}</dd>
+            <dt class="col-sm-3">Sex</dt>
+            <dd class="col-sm-9">{{ pet.animal_sex }}</dd>
+            <dt class="col-sm-3">Size</dt>
+            <dd class="col-sm-9">{{ pet.size }}</dd>
+            <dt class="col-sm-3">Breed</dt>
+            <dd class="col-sm-9">{{ pet.breed }}</dd>
+          </dl>
         </div>
-      </div>
+      </div></a>
     </li>
-    
   {% endfor %}
 </ul>
 {% endblock %}

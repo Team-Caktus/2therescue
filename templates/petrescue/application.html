@@ -1,31 +1,14 @@
-<!-- {% extends "base.html" %}
-
+{% extends "base.html" %}
+{% load static %}
 {% block content %}
-<h1>{{ dog.name }} </h1>
 
 <div>
-  <form action="{% url 'pet_applicant' pk=pet.pk %}" method="POST">
-    {{ form.as_p }}
+  <form action="{% url 'application' pk=pet.pk %}" method="POST">
+    {{ form }}
     <div>
       <button type="submit">Apply</button>
-      <a href="{% url 'home' %}">Cancel</a>
     </div>
   </form>
- <form action = "" method = "post">
-  {% csrf_token %}
-  {{form }}
-  <input type="submit" value=Submit">
-</form>
 </div>
-</div>
-{% endif %}
 
 {% endblock %}
-]
-
-{% endblock %} -->
-
-
-
-
-
