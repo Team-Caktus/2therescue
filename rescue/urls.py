@@ -30,7 +30,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 urlpatterns = [
     path("", petrescue_views.list_pets, name="list_pets"),
     path("pets/<int:pk>/", petrescue_views.pet_detail, name="get_pet"),
-    path("agency/<int:pk>/", petrescue_views.agency_detail, name="agency_detail"),
+    path("agency/", petrescue_views.agency_detail, name="agency_detail"),
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
