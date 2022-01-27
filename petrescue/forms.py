@@ -32,14 +32,6 @@ class AppForm(forms.ModelForm):
                 'zipcode',
                 'email',
         ]
-        # name = forms.CharField(label='your_name', max_length=100)
-        # phoneNumber = forms.IntegerField(label='phone')
-        # street_line_1 = forms.CharField(label='street1')
-        # street_line_2 = forms.CharField(label='street2')
-        # city = forms.CharField(label='city')
-        # state = forms.CharField(label='state')
-        # zipcode = forms.IntegerField(label='zipcode')
-        # email = forms.EmailField(label='email')
-        # foster_adopt = forms.BooleanField(label='foster_adopt')
+
 
 # can't seem to get phonenumberfield to work here.
