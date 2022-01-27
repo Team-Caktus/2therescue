@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="pet-detail">
-    <img src="media/{{ pet.pet_photo }}" />
+    <img src="media/{{ pet.pet_photo }}" alt="photo-of-{{pet.name}}" />
     <h3>{{ pet.name }}</h3>
     <div class="tags">
         <ul class="unstyled">
@@ -22,5 +22,5 @@
     <p>Date added: {{ pet.date_created }}</p>
     </ul>
 </div>
-<a href="" class="button">Apply to Adopt!</a>
+<a href="{% url 'application' %}" class="button">Apply to Adopt!</a>
 {% endblock %}

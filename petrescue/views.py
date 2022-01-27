@@ -29,11 +29,13 @@ class Deletefoster(RetrieveDestroyAPIView):
 
 def list_pets(request):
     pets = Pet.objects.all()
-    return render(request, "petrescue/homepage.html", {"pets": pets})
+    agency = get_object_or_404(Agency)
+    return render(request, "petrescue/homepage.html", {"pets": pets, "agency": agency})
 
 def pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
-    return render(request, "petrescue/pet_detail.html", {"pet": pet})
+    agency = get_object_or_404(Agency)
+    return render(request, "petrescue/pet_detail.html", {"pet": pet, "agency": agency})
 
 def agency_detail(request):
     agency = get_object_or_404(Agency)
