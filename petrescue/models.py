@@ -64,6 +64,8 @@ class Applicant(models.Model):
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
+    
+
 
     def __str__(self):
         return self.name
@@ -86,30 +88,52 @@ class Agency(models.Model):
 class Pet(models.Model):
 
     options =(
-        ('available', 'Available'),
-        ('pending', 'Pending'),
-        ('adopted', 'Adopted'),
+        ('Available', 'Available'),
+        ('Pending', 'Pending'),
+        ('Adopted', 'Adopted'),
     )
 
-    animal_sex =(
-        ('male', 'M'),
-        ('female', 'F')
+    sex =(
+        ('Male', 'M'),
+        ('Female', 'F')
+    )
+
+    age_group = (
+        ('Puppy', 'Puppy'),
+        ('Young', 'Young'),
+        ('Adult', 'Adult'),
+        ('Senior', 'Senior'),
+    )
+
+    size =(
+        ('Small', 'Small'),
+        ('Medium', 'Medium'),
+        ('Large,', 'Large'),
+        
     )
     name = models.CharField(max_length=50)
     breed = models.CharField(max_length=250)
     age = models.CharField(max_length=50)
-    size = models.CharField(max_length=50)
+    weight = models.CharField(max_length=50, null=True)
     description = models.TextField(max_length=500, null=True)
-    vac_status = models.BooleanField(default=False)
-    pet_photo = models.ImageField(null=True, blank=True)
+    current_on_vac = models.BooleanField(default=False, null=True)
+    photo = models.ImageField(null=True, blank=True)
     spay_neuter = models.BooleanField(default=False)
     health_notes = models.TextField(max_length=500, blank=True, default='')
     tags = models.ManyToManyField(to=Tag, related_name="pets", blank=True)
     notes = models.TextField(max_length=500, blank=True, default='')
     date_created = models.DateTimeField(default=timezone.now, null=True)
     date_updated = models.DateTimeField(default=timezone.now, null=True)
-    status = models.CharField(max_length=25, choices=options, default='available')
-    animal_sex = models.CharField(max_length=25, choices=animal_sex, default='male')
+    status = models.CharField(max_length=25, choices=options, default='Available')
+    sex = models.CharField(max_length=25, choices=sex, default='Male')
+    age_group = models.CharField(max_length=15, choices=age_group, default='Puppy')
+    size = models.CharField(max_length=15, choices=size, default='Medium')
+    good_with_kids = models.BooleanField(default=False)
+    good_with_dogs = models.BooleanField(default=False)
+    good_with_cats = models.BooleanField(default=False)
+    heart_worm_positive = models.BooleanField(default=False)
+    
+
 
 
     def __str__(self):
