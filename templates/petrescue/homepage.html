@@ -6,7 +6,7 @@
     {% for pet in pets %}
     <li class="list-inline-item">
       <a href="{% url 'get_pet' pk=pet.pk %}"><div class="card homepage_card">
-    <img src="media/{{ pet.pet_photo }}" class="card-img-top img-thumbnail homepage_img" alt="photo-of-{{pet.name}}">
+    <img src="{{ pet.pet_photo.url }}" class="card-img-top img-thumbnail homepage_img" alt="photo-of-{{pet.name}}">
     <div class="card-body">
       <h5 class="card-title">
         <a href="{% url 'get_pet' pk=pet.pk %}">{{ pet.name }}</a></h5>

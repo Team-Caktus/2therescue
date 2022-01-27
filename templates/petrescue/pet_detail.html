@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="pet-detail">
-    <img src="media/{{ pet.pet_photo }}" alt="photo-of-{{pet.name}}" />
+    <img src="{{ pet.pet_photo.url }}" alt="photo-of-{{pet.name}}" />
     <h3>{{ pet.name }}</h3>
     <div class="tags">
         <ul class="unstyled">
