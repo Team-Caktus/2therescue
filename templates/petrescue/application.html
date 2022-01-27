@@ -3,7 +3,7 @@
 {% block content %}
 
 <div>
-  <form action="{% url 'application' %}" method="POST">
+  <form action="{% url 'application' pk=pet.pk %}" method="POST">
     {{ form }}
     <div>
       <button type="submit">Apply</button>
