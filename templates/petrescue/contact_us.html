@@ -2,13 +2,16 @@
 {% load static %}
 {% block content %}
 
-<!-- {{ agency.name }}
-{{ agency.phoneNumber }}
-{{ agency.street_line_1 }}
-{{ agency.street_line_2 }}
-{{ agency.city }}
-{{ agency.state }}
-{{ agency.zipcode }}
-{{ agency.email }} -->
+<ul class="list-unstyled">
+<li>{{ agency.name }}</li>
+<li>{{ agency.phoneNumber }}</li>
+<li>{{ agency.street_line_1 }}</li>
+<li>{{ agency.street_line_2 }}</li>
+<li>{{ agency.city }}</li>
+<li>{{ agency.state }}</li>
+<li>{{ agency.zipcode }}</li>
+<li>{{ agency.email }}</li>
+<li>
+</ul>
 
-{% end block %}
+{% endblock %}

@@ -32,10 +32,10 @@ def list_pets(request):
     return render(request, "petrescue/homepage.html", {"pets": pets})
 
 def pet_detail(request, pk):
-    pet = get_object_or_404(Pet,pk=pk)
+    pet = get_object_or_404(Pet, pk=pk)
     return render(request, "petrescue/pet_detail.html", {"pet": pet})
 
-def agency_detail(request, pk):
+def agency_detail(request):
     agency = get_object_or_404(Agency)
     return render(request, "petrescue/contact_us.html", {"agency": agency})
 
@@ -61,10 +61,3 @@ def AppView(request):
         return redirect(to="application_submitted")
 
     return render(request, 'petrescue/application.html', {'form': form})
-
-
-
-
-
-
-
