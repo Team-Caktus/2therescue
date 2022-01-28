@@ -65,4 +65,11 @@ def AppView(request, pk):
         applicant.save()
         return redirect(to="application_submitted")
 
-    return render(request, 'petrescue/application.html', {'form': form, 'pet':pet, 'pk':pk})
+    return render(request, 'petrescue/application.html', {'form': form})
+
+
+
+
+
+
+
