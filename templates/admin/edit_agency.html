@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
-{% if request.user.is_authenticated %}
-<h1>Edit your agency details below!</h1>
-{% else %}
-<h1>Please log in to view this page.</h1>
-{% endblock %}
