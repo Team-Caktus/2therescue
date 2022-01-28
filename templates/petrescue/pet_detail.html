@@ -2,25 +2,24 @@
 {% load static %}
 {% block content %}
 <div class="pet-detail">
-    <img src="{{ pet.pet_photo.url }}" alt="photo-of-{{pet.name}}" />
+    <img src="{{ pet.photo.url }}"class="card-img-top img-thumbnail" alt="photo-of-{{pet.name}}" />
     <h3>{{ pet.name }}</h3>
-    <div class="tags">
-        <ul class="unstyled">
-        {% for tag in tags %}
-            <li>{{ tag.tag }}</li>
-        {% endfor %}
-    </ul>
-    </div>
-    <ul class="list-unstyled">
-    <li>Breed: {{ pet.breed }}</li>
-    <li>Age: {{ pet.age }}</li>
-    <li>Weight: {{ pet.size }}</li>
-
-    <p>{{ pet.description }}</p>
-    <!-- {{ pet.vac_status }} -->
-    <!-- {{ pet.spay_neuter }} -->
-    <p>Date added: {{ pet.date_created }}</p>
-    </ul>
+    <dl class="row">
+        <dt class="col-sm-3">Breed</dt>
+        <dd class="col-sm-9">{{ pet.breed }}</dd>
+        <dt class="col-sm-3">Age</dt>
+        <dd class="col-sm-9">{{ pet.age }}</dd>
+        <dt class="col-sm-3">Weight</dt>
+        <dd class="col-sm-9">{{ pet.size }}</dd>
+        <dt class="col-sm-3">About {{ pet.name }}</dt>
+        <dd class="col-sm-9">{{ pet.description }}</dd>
+        <dt class="col-sm-3">Vaccinations up-to-date</dt>
+        <dd class="col-sm-9">{{ pet.current_on_vac }}</dd>
+        <dt class="col-sm-3">Spayed/Neutered</dt>
+        <dd class="col-sm-9">{{ pet.spay_neuter }}</dd>
+        <dt class="col-sm-3">Date added to the rescue</dt>
+        <dd class="col-sm-9">{{ pet.date_created }}</dd>
+    </dl>
 </div>
 <a href="{% url 'application' %}" class="button">Apply to Adopt!</a>
 {% endblock %}
