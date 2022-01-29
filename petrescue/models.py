@@ -1,8 +1,9 @@
 
+from email.policy import default
 from ssl import Options
 from django.db import models
 from django.utils import timezone
-from django.forms import ModelForm
+from django.forms import IntegerField, ModelForm
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -46,7 +47,7 @@ class Foster(models.Model):
     email = models.EmailField(max_length=150)
     phoneNumber = PhoneNumberField(unique = True, null = False, blank = False, default='')
     num_of_adults = models.IntegerField()
-    ages_of_children = models.CharField(max_length=50)
+    # ages_of_children = models.CharField()
     any_other_pets = models.BooleanField(default=False)
 
     def __str__(self):
@@ -56,14 +57,44 @@ class Foster(models.Model):
 
 
 class Applicant(models.Model):
+
+
+    current_residence =(
+        ('House', 'House'),
+        ('Apartment', 'Apartment'),
+        ('Condo', 'Condo'),
+    )
+
+    adopt_reason =(
+        ('Companion', 'Companion'),
+        ('Guard_Dog', 'Guard_Dog'),
+        ('Breeding', 'Breeding'),
+        ('Other', 'Other'),
+    )
+
     name = models.CharField(max_length=100)
-    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False, default='')
+    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False,)
     street_line_1 = models.CharField(max_length=255, blank=False, null=True)
-    street_line_2 = models.CharField(max_length=255, blank=False, null=True)
+    street_line_2 = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=80, blank=False, null=True)
     state = models.CharField(max_length=80, blank=False, null=True)
-    zipcode = models.IntegerField(default=False)
-    email = models.EmailField(max_length=150)
+    zipcode = models.IntegerField(default=False, blank=False)
+    email = models.EmailField(max_length=150, blank=False)
+    pet_id = models.ForeignKey("pet", on_delete=models.CASCADE, default=None, blank=False)
+    current_residence = models.TextField(choices=current_residence, blank=True)
+    primary_owner = models.CharField(max_length=150, blank=True, null=False)
+    num_adults = models.IntegerField(blank=False, default=None)
+    num_children = models.IntegerField(blank=False, default=None)
+    ages_children = models.TextField(blank=True, null=False)
+    other_pets = models.BooleanField(default=False)
+    other_pets_desc = models.TextField(blank=True)
+    adopt_reason = models.TextField(choices= adopt_reason, blank=True)
+    vet_info = models.TextField(blank=True, null=False)
+    fenced_yard = models.BooleanField(default=False)
+    date_created = models.DateTimeField(default=timezone.now, null=True)
+    date_updated = models.DateTimeField(default=timezone.now, null=True)
+
+
     
 
 
@@ -80,6 +111,7 @@ class Agency(models.Model):
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
     email = models.EmailField(max_length=150)
+    
     # logo = models.ImageField()
 
     def __str__(self):
@@ -108,7 +140,7 @@ class Pet(models.Model):
     size =(
         ('Small', 'Small'),
         ('Medium', 'Medium'),
-        ('Large,', 'Large'),
+        ('Large', 'Large'),
         
     )
     name = models.CharField(max_length=50)
