@@ -21,13 +21,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from petrescue import views as petrescue_views
 
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
-from wagtail.documents import urls as wagtaildocs_urls
+# from wagtail.admin import urls as wagtailadmin_urls
+# from wagtail.core import urls as wagtail_urls
+# from wagtail.documents import urls as wagtaildocs_urls
 
 
 
 urlpatterns = [
+    path('accounts/', include('registration.backends.simple.urls')),
     path("", petrescue_views.list_pets, name="list_pets"),
     path("pets/<int:pk>/", petrescue_views.pet_detail, name="get_pet"),
     path("about_us/", petrescue_views.agency_detail, name="agency_detail"),
@@ -38,7 +39,7 @@ urlpatterns = [
     path('login/', petrescue_views.login, name='login'),
     path('pet_detail/<int:pk>/', petrescue_views.admin_pet_detail, name='admin_pet_detail'),
     path('pet_list/', petrescue_views.pet_list, name='pet_list'),
-    path('cms/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_urls)),
+    # path('cms/', include(wagtailadmin_urls)),
+    # path('documents/', include(wagtaildocs_urls)),
     path('application/', petrescue_views.AppView, name='application')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
