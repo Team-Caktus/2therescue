@@ -16,6 +16,7 @@ django-address = "*"
 django-toolbelt = "*"
 boto3 = "*"
 django-storages = "*"
+django-registration-redux = "*"
 
 [dev-packages]
 
