@@ -1,9 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-{% if request.user.is_authenticated %}
-<h1>Add a new pet below!</h1>
-{% else %}
-<h1>Please log in to view this page.</h1>
-{% endif %}
+<div class="pet-detail">
+    <img src="{{ pet.photo.url }}"class="card-img-top img-thumbnail" alt="photo-of-{{pet.name}}" />
+    <h3>{{ pet.name }}</h3>
+    <dl class="row">
+        <dt class="col-sm-3">Breed</dt>
+        <dd class="col-sm-9">{{ pet.breed }}</dd>
+        <dt class="col-sm-3">Age</dt>
+        <dd class="col-sm-9">{{ pet.age }}</dd>
+        <dt class="col-sm-3">Weight</dt>
+        <dd class="col-sm-9">{{ pet.size }}</dd>
+        <dt class="col-sm-3">About {{ pet.name }}</dt>
+        <dd class="col-sm-9">{{ pet.description }}</dd>
+        <dt class="col-sm-3">Vaccinations up-to-date</dt>
+        <dd class="col-sm-9">{{ pet.current_on_vac }}</dd>
+        <dt class="col-sm-3">Spayed/Neutered</dt>
+        <dd class="col-sm-9">{{ pet.spay_neuter }}</dd>
+        <dt class="col-sm-3">Time in rescue</dt>
+        <dd class="col-sm-9">{{ pet.date_created }}</dd>
+    </dl>
+</div>
 {% endblock %}
