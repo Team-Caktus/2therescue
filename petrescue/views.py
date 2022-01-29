@@ -5,6 +5,7 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView,
 from .models import Foster, Pet, Applicant, Agency
 from .forms import AppForm
 from django import forms
+from django.views import View
 
 
 class FosterList(generics.ListCreateAPIView):
@@ -55,7 +56,7 @@ class DeletePet(RetrieveDestroyAPIView):
 
 class NewPet(CreateAPIView):
     serializer_class = PetSerializer
-   
+
 def AppView(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
     form = AppForm(data=request.POST)
@@ -66,6 +67,38 @@ def AppView(request, pk):
         return redirect(to="application_submitted")
 
     return render(request, 'petrescue/application.html', {'form': form})
+
+
+def agency(request):
+    agency = Agency.objects.all()
+    return render(request, "admin/agency.html", {"agency": agency})
+
+
+def login(request):
+    applicant = Applicant.objects.all()
+    return render(request, "admin/login.html", {"applicant": applicant})
+#not sure what else we need here
+
+def application_detail(request, pk):
+    applicant = get_object_or_404(Applicant, pk=pk)
+    return render(request, "admin/application_detail.html", {"applicant": applicant})
+
+def application_list(request):
+    applicant = Applicant.objects.all()
+    return render(request, "admin/application_detail.html", {"applicant": applicant})
+
+def admin_pet_detail(request, pk):
+    pet = get_object_or_404(Pet, pk=pk)  
+    return render(request, "admin/pet_detail.html", {"pet": pet, "agency": agency})
+
+
+def pet_list(request):
+    pets = Pet.objects.all()
+    return render(request, "admin/pet_list.html", {"pets": pets})
+
+
+
+
 
 
 
