@@ -59,12 +59,12 @@ class DeletePet(RetrieveDestroyAPIView):
 class NewPet(CreateAPIView):
     serializer_class = PetSerializer
 
-def AppView(request, pk):
-    pet = get_object_or_404(Pet, pk=pk)
+def AppView(request):
+    # pet = get_object_or_404(Pet, pk=pk)
     form = AppForm(data=request.POST)
     if form.is_valid():
         applicant = form.save()
-        applicant.pet_id = pet.pk
+        # applicant.pet_id = pet.pk
         applicant.save()
         return redirect(to="application_submitted")
 

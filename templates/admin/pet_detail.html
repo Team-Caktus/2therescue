@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
-<div class="pet-detail">
+{% if request.user.is_authenticated %}
+<form action="{% url 'pet_detail' pk=pet.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <div>
+      <button type="submit">Submit Card</button>
+      <a href="{% url 'home' %}">Cancel</a>
+    </div>
+  </form>
     <img src="{{ pet.photo.url }}"class="card-img-top img-thumbnail" alt="photo-of-{{pet.name}}" />
     <h3>{{ pet.name }}</h3>
     <dl class="row">
@@ -20,5 +29,6 @@
         <dt class="col-sm-3">Time in rescue</dt>
         <dd class="col-sm-9">{{ pet.date_created }}</dd>
     </dl>
-</div>
+
+
 {% endblock %}

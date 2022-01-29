@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% if request.user.is_authenticated %}
 <h1>Review your list of pets below!</h1>
+
     {% for pet in pets %}
     <a href="{% url 'get_pet' pk=pet.pk %}">
         <ul class="list-unstyled list-inline">
@@ -14,4 +16,7 @@
           </ul>
         </a>
     {% endfor %}
+    {% else %}
+    <h1>Please <a href="/accounts/login/">login</a> to view this page.</h1>
+    {% endif %}
 {% endblock %}
