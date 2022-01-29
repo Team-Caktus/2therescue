@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -189,6 +190,11 @@ AWS_S3_OBJECT_PARAMETERS = {
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_FILE_OVERWRITE = False 
 AWS_DEFAULT_ACL = 'public-read'
+
+# reg redux
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = "pet_list"
 
 # 'rescue.storage_backends.MediaStorage'  
 # MEDIA_URL = 'https://teamcaktuspetphotos.s3.amazonaws.com/media/'

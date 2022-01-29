@@ -6,6 +6,8 @@ from .models import Foster, Pet, Applicant, Agency
 from .forms import AppForm
 from django import forms
 from django.views import View
+from django.contrib.auth.decorators import login_required
+
 
 
 class FosterList(generics.ListCreateAPIView):
@@ -68,7 +70,7 @@ def AppView(request, pk):
 
     return render(request, 'petrescue/application.html', {'form': form})
 
-
+@login_required
 def agency(request):
     agency = Agency.objects.all()
     return render(request, "admin/agency.html", {"agency": agency})
@@ -79,19 +81,22 @@ def login(request):
     return render(request, "admin/login.html", {"applicant": applicant})
 #not sure what else we need here
 
+@login_required
 def application_detail(request, pk):
     applicant = get_object_or_404(Applicant, pk=pk)
     return render(request, "admin/application_detail.html", {"applicant": applicant})
 
+@login_required
 def application_list(request):
     applicant = Applicant.objects.all()
     return render(request, "admin/application_detail.html", {"applicant": applicant})
 
+@login_required
 def admin_pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)  
     return render(request, "admin/pet_detail.html", {"pet": pet, "agency": agency})
 
-
+@login_required
 def pet_list(request):
     pets = Pet.objects.all()
     return render(request, "admin/pet_list.html", {"pets": pets})
