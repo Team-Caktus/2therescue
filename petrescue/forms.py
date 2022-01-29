@@ -3,7 +3,7 @@ from ctypes import addressof
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser, Applicant
+from .models import CustomUser, Applicant, Pet
 from phonenumber_field.modelfields import PhoneNumberField
 
 class CustomUserCreationForm(UserCreationForm):
@@ -31,7 +31,37 @@ class AppForm(forms.ModelForm):
                 'state',
                 'zipcode',
                 'email',
+                
         ]
+
+
+class PetForm(forms.ModelForm):
+        class Meta:
+            model = Pet
+            fields = [
+                'name',
+                'breed',
+                'age',
+                'weight',
+                'description',
+                'current_on_vac',
+                'photo',
+                'spay_neuter',
+                'health_notes', 
+                'tags', 
+                'notes', 
+                'date_created',
+                'date_updated',
+                'status', 
+                'sex',
+                'age_group',
+                'size',
+                'good_with_kids', 
+                'good_with_dogs',
+                'good_with_cats',
+                'heart_worm_positive',
+                ]
+
 
 
 # can't seem to get phonenumberfield to work here.
