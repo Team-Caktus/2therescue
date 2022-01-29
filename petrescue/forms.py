@@ -18,7 +18,6 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email')
 
-
 class AppForm(forms.ModelForm):
         class Meta:
             model = Applicant
@@ -31,7 +30,19 @@ class AppForm(forms.ModelForm):
                 'state',
                 'zipcode',
                 'email',
-                
+                'pet_id',
+                'current_residence',
+                'primary_owner',
+                'num_adults',
+                'num_children',
+                'ages_children',
+                'other_pets',
+                'other_pets_desc',
+                'adopt_reason', 
+                'vet_info',
+                'fenced_yard',
+                'date_created',
+                'date_updated',   
         ]
 
 
