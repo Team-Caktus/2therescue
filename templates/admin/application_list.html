@@ -3,6 +3,12 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Review your list of applications below!</h1>
+{% for applicant in applicants %}
+<ul>
+    <li><a href="{% url 'application_detail' %}"></a>{}</li>
+</ul>
+{% endfor %}
 {% else %}
 <h1>Please log in to view this page.</h1>
+{% endif %}
 {% endblock %}

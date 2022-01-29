@@ -17,9 +17,9 @@
         <dd class="col-sm-9">{{ pet.current_on_vac }}</dd>
         <dt class="col-sm-3">Spayed/Neutered</dt>
         <dd class="col-sm-9">{{ pet.spay_neuter }}</dd>
-        <dt class="col-sm-3">Date added to the rescue</dt>
+        <dt class="col-sm-3">Time in rescue</dt>
         <dd class="col-sm-9">{{ pet.date_created }}</dd>
     </dl>
 </div>
-<a href="{% url 'application' %}" class="button">Apply to Adopt!</a>
+<a href="{% url 'application' pk=pet.pk %}" class="button">Apply to Adopt!</a>
 {% endblock %}

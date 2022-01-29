@@ -3,6 +3,19 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Review your list of pets below!</h1>
+    {% for pet in pets %}
+    <a href="{% url 'get_pet' pk=pet.pk %}">
+        <ul class="list-unstyled list-inline">
+            <li class="list-inline-item"><img src="{{ pet.photo.url }}" class="img-thumbnail" alt="photo-of-{{pet.name}}"></li>
+            <li>{{ pet.name }}</li>
+            <li>{{ pet.age }}</li>
+            <li>{{ pet.sex }}</li>
+            <li>{{ pet.size }}</li>
+            <li>{{ pet.breed }}</li>
+          </ul>
+        </a>
+    {% endfor %}
 {% else %}
 <h1>Please log in to view this page.</h1>
+{% endif %}
 {% endblock %}
