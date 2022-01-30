@@ -41,8 +41,8 @@ class AppForm(forms.ModelForm):
                 'adopt_reason', 
                 'vet_info',
                 'fenced_yard',
-                'date_created',
-                'date_updated',   
+                # 'date_created',
+                # 'date_updated',   
         ]
 
 
