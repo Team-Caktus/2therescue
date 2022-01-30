@@ -1,9 +1,10 @@
 
 from email.policy import default
 from ssl import Options
+from tkinter import CASCADE
 from django.db import models
 from django.utils import timezone
-from django.forms import IntegerField, ModelForm
+from django.forms import BooleanField, IntegerField, ModelForm
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -72,27 +73,40 @@ class Applicant(models.Model):
         ('Other', 'Other'),
     )
 
-    name = models.CharField(max_length=100)
-    phoneNumber = PhoneNumberField(unique = True, null = False, blank = False,)
-    street_line_1 = models.CharField(max_length=255, blank=False, null=True)
+    status =(
+        ('Approved', 'Approved'),
+        ('Pending', 'Pending'),
+        ('Denied', 'Denied'),
+        ('Open', 'Open'),
+    )
+
+    name = models.CharField(max_length=100, blank=True)
+    phoneNumber = PhoneNumberField(unique = True, null = False, blank = True,)
+    street_line_1 = models.CharField(max_length=255, blank=True, null=True)
     street_line_2 = models.CharField(max_length=255, blank=True, null=True)
-    city = models.CharField(max_length=80, blank=False, null=True)
-    state = models.CharField(max_length=80, blank=False, null=True)
-    zipcode = models.IntegerField(default=False, blank=False)
-    email = models.EmailField(max_length=150, blank=False)
-    pet_id = models.ForeignKey("pet", on_delete=models.CASCADE, default=None, blank=False)
+    city = models.CharField(max_length=80, blank=True, null=True)
+    state = models.CharField(max_length=80, blank=True, null=True)
+    zipcode = models.IntegerField(default=False, blank=True)
+    email = models.EmailField(max_length=150, blank=True)
+    pet_id = models.ForeignKey("pet", on_delete=models.CASCADE, default=None, blank=True)
     current_residence = models.TextField(choices=current_residence, blank=True)
     primary_owner = models.CharField(max_length=150, blank=True, null=False)
-    num_adults = models.IntegerField(blank=False, default=None)
-    num_children = models.IntegerField(blank=False, default=None)
+    num_adults = models.IntegerField(blank=True, default=None)
+    num_children = models.IntegerField(blank=True, default=None)
     ages_children = models.TextField(blank=True, null=False)
     other_pets = models.BooleanField(default=False)
     other_pets_desc = models.TextField(blank=True)
     adopt_reason = models.TextField(choices= adopt_reason, blank=True)
     vet_info = models.TextField(blank=True, null=False)
     fenced_yard = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=timezone.now, null=True)
+    date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(default=timezone.now, null=True)
+    status = models.TextField(choices= status, blank=False, default=True)
+    foster_info = models.TextField(blank=True)
+    health_concerns = models.BooleanField(blank=True, default=True)
+    notes = models.TextField(blank=True)
+    
+    
 
 
     
@@ -104,13 +118,22 @@ class Applicant(models.Model):
 
 class Agency(models.Model):
     name = models.CharField(max_length=200)
+    agency_owner = models.CharField(max_length=150, null=True)
     phoneNumber = PhoneNumberField(unique=True, null=False, blank=False, default='')
     street_line_1 = models.CharField(max_length=255, blank=False, null=True)
     street_line_2 = models.CharField(max_length=255, blank=False, null=True)
     city = models.CharField(max_length=80, blank=False, null=True)
     state = models.CharField(max_length=80, blank=False, null=True)
     zipcode = models.IntegerField(default=False)
+    business_hours = models.TextField(blank=True)
+    website_info = models.TextField(blank=True)
+    desciption = models.TextField(max_length=250, blank=True)
     email = models.EmailField(max_length=150)
+    about_us = models.TextField(max_length=250, blank=True)
+    agency_mission = models.TextField(max_length=250, blank=True)
+    facebook = models.URLField(max_length=250, default=True)
+    twitter = models.URLField(max_length=250, default=True)
+    instagram = models.URLField(max_length=250, default=True)
     
     # logo = models.ImageField()
 
@@ -164,6 +187,7 @@ class Pet(models.Model):
     good_with_dogs = models.BooleanField(default=False)
     good_with_cats = models.BooleanField(default=False)
     heart_worm_positive = models.BooleanField(default=False)
+    # agency = models.ForeignKey(Agency, default=None, on_delete=CASCADE)
     
 
 
