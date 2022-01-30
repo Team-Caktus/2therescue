@@ -23,7 +23,7 @@ class AppForm(forms.ModelForm):
             model = Applicant
             fields = [
                 'name',
-                'phoneNumber',
+                'phone',
                 'street_line_1',
                 'street_line_2',
                 'city',
