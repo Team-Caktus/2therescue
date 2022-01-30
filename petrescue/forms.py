@@ -40,9 +40,7 @@ class AppForm(forms.ModelForm):
                 'other_pets_desc',
                 'adopt_reason', 
                 'vet_info',
-                'fenced_yard',
-                'date_created',
-                'date_updated',   
+                'fenced_yard',      
         ]
 
 
@@ -59,10 +57,7 @@ class PetForm(forms.ModelForm):
                 'photo',
                 'spay_neuter',
                 'health_notes', 
-                'tags', 
                 'notes', 
-                'date_created',
-                'date_updated',
                 'status', 
                 'sex',
                 'age_group',
