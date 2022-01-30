@@ -1,12 +1,6 @@
 from rest_framework import serializers
-from .models import Foster, Tag, Pet, Applicant, Agency
+from .models import Foster, Pet, Applicant, Agency
 
-
-class TagSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Tag
-        fields = ('tag')
 
 class FosterSerializer(serializers.ModelSerializer):
 
@@ -34,7 +28,6 @@ class PetSerializer(serializers.ModelSerializer):
         'image_url',
         'spay_neuter',
         'health_notes',
-        'tags',
         'notes',
         'date_created',
         'date_updated',
