@@ -76,9 +76,9 @@ def agency(request):
     return render(request, "admin/agency.html", {"agency": agency})
 
 
-def login(request):
-    applicant = Applicant.objects.all()
-    return render(request, "admin/login.html", {"applicant": applicant})
+# def login(request):
+#     applicant = Applicant.objects.all()
+#     return render(request, "admin/login.html", {"applicant": applicant})
 #not sure what else we need here
 
 @login_required
