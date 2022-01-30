@@ -59,12 +59,12 @@ class DeletePet(RetrieveDestroyAPIView):
 class NewPet(CreateAPIView):
     serializer_class = PetSerializer
 
-def AppView(request, pk):
-    pet = get_object_or_404(Pet, pk=pk)
+def AppView(request):
+    # pet = get_object_or_404(Pet, pk=pk)
     form = AppForm(data=request.POST)
     if form.is_valid():
         applicant = form.save()
-        applicant.pet_id = pet.pk
+        # applicant.pet_id = pet.pk
         applicant.save()
         return redirect(to="application_submitted")
 
@@ -76,9 +76,9 @@ def agency(request):
     return render(request, "admin/agency.html", {"agency": agency})
 
 
-def login(request):
-    applicant = Applicant.objects.all()
-    return render(request, "admin/login.html", {"applicant": applicant})
+# def login(request):
+#     applicant = Applicant.objects.all()
+#     return render(request, "admin/login.html", {"applicant": applicant})
 #not sure what else we need here
 
 @login_required
