@@ -159,6 +159,9 @@ cython_debug/
 #node
 node_modules/
 
+#custom
+model_fields.md
+
 # PyCharm
 #  JetBrains specific template is maintainted in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore

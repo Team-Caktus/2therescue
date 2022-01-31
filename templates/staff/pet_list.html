@@ -22,7 +22,7 @@
         <tr>
         <td>{{ pet.status }}
         <td><img src="{{ pet.photo.url }}" class="img-thumbnail" alt="thumbnail-of-{{pet.name}}" style="max-height: 50px;"></td>
-        <td><a href="{% url 'get_pet' pk=pet.pk %}">{{ pet.name }}</a></td>
+        <td><a href="{% url 'admin_pet_detail' pk=pet.pk %}">{{ pet.name }}</a></td>
         <td>{{ pet.breed }}</td>
         <td>{{ pet.sex }}</td>
         <td>{{ pet.size }}</td>
