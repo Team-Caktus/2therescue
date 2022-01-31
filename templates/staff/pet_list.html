@@ -3,7 +3,6 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Review your list of pets below!</h1>
-<!-- <ul class="list-unstyled list-inline"> -->
 
 <table class="table">
     <thead>
@@ -15,8 +14,8 @@
         <th>Sex</th>
         <th>Size</th>
         <th>Date Added</th>
-        <th>New Applications</th>
-        <th>Open Applications</th>
+        <!-- <th>New Applications</th>
+        <th>Open Applications</th> -->
         </tr>
         </thead>
         <tbody>
@@ -28,8 +27,8 @@
         <td>{{ pet.breed }}</td>
         <td>{{ pet.sex }}</td>
         <td>{{ pet.size }}</td>
-        <td>{{ pet.date_created }}</td>
-        </tr></a>
+        <td>{{ pet.date_created }}</td></a>
+        </tr>
     {% endfor %}
     </tbody>
     </table>
