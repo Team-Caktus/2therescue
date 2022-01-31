@@ -6,12 +6,28 @@
 <table class="table">
     <thead>
       <tr>
-        <th title="Name">
+            <th>Status</th>
+            <th>Pet Name</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Date Added</th>
+            </tr>
+            </thead>
+            <tbody>
     {% for application in applications %}
-    <li class="list-inline-item"><ul class="list-unstyled list-inline">
-        <li class="list-inline-item"><a href="{% url 'application_detail' pk=applicant.pk %}"><li>{{ applicant.name }}</li></a></ul></li>
-    {% endfor %}
-</ul>
+            <tr>
+            <a href="{% url 'get_pet' pk=pet.pk %}">
+            <td>{{ applicant.status }}</td>
+            <td>{{ applicant.pet_id }}</td>
+            <td>{{ applicant.name }}</td>
+            <td>{{ applicant.phone }}</td>
+            <td>{{ applicant.email }}</td>
+            <td>{{ applicant.date_created }}</td></a>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
 {% else %}
 <h1>Please <a href="/accounts/login/">log in</a> to view this page.</h1>
 {% endif %}
