@@ -47,6 +47,7 @@ def app_saved(request):
 
 @login_required
 def agency(request):
+    agency = get_object_or_404(Agency)
     agency = Agency.objects.all()
     if request.method == 'GET':
         form = AgencyForm(instance=agency)
@@ -80,6 +81,7 @@ def application_list(request):
     applications = Applicant.objects.all()
     agency = get_object_or_404(Agency)
     pets = Pet.objects.all()
+    
     return render(request, "staff/application_list.html", {"applications": applications, "pets": pets, "agency": agency})
 
 
@@ -97,6 +99,19 @@ def admin_pet_detail(request, pk):
             return redirect(to='pet_list')
     return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk, "agency": agency})
 
+# @login_required
+# def add_pet (request, pk):
+#     pet = get_object_or_404(Pet, pk=pk)
+#     agency = get_object_or_404(Agency)
+#     # applicant = get_object_or_404(Applicant, pk=pk)
+#     request.method == 'POST':
+#         form = PetForm(instance=pet)
+#     else:
+#         form = PetForm(data=request.POST, instance=pet)
+#         if form.is_valid():
+#             pet = form.save()
+#             return redirect(to='pet_list')
+#     return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk, "agency": agency})
 
 @login_required
 def pet_list(request):
@@ -114,13 +129,13 @@ def staff_home(request):
     return render(request, "staff/home.html", {"pets": pets, "applications": applications, "agency": agency})
 
 
-@login_required
-def pet_applications(request, pk):
-    pet = get_object_or_404(Pet, pk=pk)
-    applications = Applicant.objects.filter(pet=pet.pk)
+# @login_required
+# def pet_applications(request, pk):
+#     pet = get_object_or_404(Pet, pk=pk)
+#     applications = Applicant.objects.filter(pet=pet.pk)
     
-    return render(request, "staff/application_list.html", {
-        "pet": pet, "applications": applications})
+#     return render(request, "staff/application_list.html", {
+#         "pet": pet, "applications": applications})
 
 
 # @login_required
