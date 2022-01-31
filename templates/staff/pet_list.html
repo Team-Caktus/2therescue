@@ -34,4 +34,9 @@
     {% else %}
     <h1>Please <a href="/accounts/login/">log in</a> to view this page.</h1>
     {% endif %}
+
+    <div>
+        <a href="{% url 'get_pet' pk=pet.pk %}"></a>
+        <button class="button is-info"  type="submit">Add Pet</button>
+    </div>
 {% endblock %}
