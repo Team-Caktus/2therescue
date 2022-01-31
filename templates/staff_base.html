@@ -18,7 +18,7 @@
         <li class="nav-item"><a href="" class="nav-link" aria-current="page">Available Pets</a></li>
         <li class="nav-item"><a href="{% url 'agency_detail' %}" class="nav-link">About Us</a></li>
         <li class="nav-item">{% if request.user.is_authenticated %} <a href="/accounts/logout/">Logout</a> | <a href="/"><i class="fas fa-home"></i></a>
-        {% else %} <a href="/accounts/login/">Login</a><li class="nav-item"><a href="{% url 'list_pets' %}" ></a></li>
+        {% else %} <a href="/accounts/login/">Login</a><li class="nav-item"><a href="{% url 'list_pets' %}" ></a>{% endif %}</li>
       </ul>
     </header>
   <div class="container">
