@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="pet-detail">
-    <img src="{{ pet.photo.url }}"class="card-img-top img-thumbnail" alt="photo-of-{{pet.name}}" />
-    <h3>{{ pet.name }}</h3>
+<div class="pet-detail card">
+    <img src="{{ pet.photo.url }}"class="pet-photo" alt="photo-of-{{pet.name}}" />
+    <h2 class="card-title">{{ pet.name }}</h2>
+    <div class="card-body">
     <dl class="row">
         <dt class="col-sm-3">Breed</dt>
         <dd class="col-sm-9">{{ pet.breed }}</dd>
@@ -20,6 +21,29 @@
         <dt class="col-sm-3">Time in rescue</dt>
         <dd class="col-sm-9">{{ pet.date_created }}</dd>
     </dl>
+    </div>
 </div>
+{{ pet.name }}
+{{ pet.breed }}
+{{ pet.age }}
+{{ pet.weight }}
+{{ pet.description }}
+{{ pet.pet_photo }}
+{{ pet.spay_neuter }}
+{{ pet.health_notes }}
+{{ pet.notes }}
+{{ pet.date_created }}
+{{ pet.date_updated }}
+{{ pet.status }}
+{{ pet.sex }}
+{{ pet.age_group }}
+{{ pet.size }}
+{{ pet.good_with_kids }}
+{{ pet.good_with_dogs }}
+{{ pet.good_with_cats }}
+{{ pet.heart_worm_positive }}
+{{ pet.health_issues }}
+{{ pet.foster }}
+
 <a href="{% url 'application' %}" class="button">Apply to Adopt!</a>
 {% endblock %}
