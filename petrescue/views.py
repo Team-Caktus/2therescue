@@ -66,7 +66,7 @@ def AppView(request):
         applicant = form.save()
         # applicant.pet_id = pet.pk
         applicant.save()
-        return redirect(to="application_submitted")
+        return redirect(to="application_submitted.html")
 
     return render(request, 'petrescue/application.html', {'form': form})
 
@@ -101,7 +101,8 @@ def pet_list(request):
     pets = Pet.objects.all()
     return render(request, "admin/pet_list.html", {"pets": pets})
 
-
+# def app_submitted():
+#     return render("application_submitted.html")
 
 
 

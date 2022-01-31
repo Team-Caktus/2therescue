@@ -5,18 +5,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2therescue</title>
+  <title>{{ agency.name }} 2therescue</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  
   <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+  <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}" />
 </head>
 <body class="admin">
     <div class="container-fluid"><header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"><h1>2TheRescue!</h1></a>
       <ul class="nav nav-pills">
-class="nav-link" aria-current="page">Available Pets</a></li>
+        <li class="nav-item"><a href="" class="nav-link" aria-current="page">Available Pets</a></li>
         <li class="nav-item"><a href="{% url 'agency_detail' %}" class="nav-link">About Us</a></li>
-        <li class="nav-item">{% if request.user.is_authenticated %} <a class="washed-blue" href="/accounts/logout/">Logout</a> | <a class="washed-blue" href="/"><i class="fas fa-home"></i></a>
-        {% else %} <a class="washed-blue" href="/accounts/login/">Login</a><li class="nav-item"><a href="{% url 'list_pets' %}" </li>
+        <li class="nav-item">{% if request.user.is_authenticated %} <a href="/accounts/logout/">Logout</a> | <a href="/"><i class="fas fa-home"></i></a>
+        {% else %} <a href="/accounts/login/">Login</a><li class="nav-item"><a href="{% url 'list_pets' %}" ></a></li>
       </ul>
     </header>
   <div class="container">
