@@ -25,8 +25,6 @@ from petrescue import views as petrescue_views
 # from wagtail.core import urls as wagtail_urls
 # from wagtail.documents import urls as wagtaildocs_urls
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),

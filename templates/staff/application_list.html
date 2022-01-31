@@ -17,7 +17,7 @@
             <tbody>
     {% for application in applications %}
             <tr>
-            <a href="{% url 'get_pet' pk=pet.pk %}">
+            <a href="{% url 'application_detail' pk=application.pk %}">
             <td>{{ applicant.status }}</td>
             <td>{{ applicant.pet_id }}</td>
             <td>{{ applicant.name }}</td>
