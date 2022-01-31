@@ -16,7 +16,7 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email')
 
-class AdminAppForm(ModelForm):
+class AppForm(ModelForm):
         class Meta:
             model = Applicant
             fields = [
@@ -38,14 +38,17 @@ class AdminAppForm(ModelForm):
                 'other_pets_desc',
                 'adopt_reason', 
                 'vet_info',
-                'fenced_yard',
-                'status',
-                'notes',      
+                'fenced_yard',    
         ]
 
-class AppForm(AdminAppForm):
-        class Meta(AdminAppForm.Meta):
-            exclude = ('status', 'notes', )
+class AdminAppForm(ModelForm):
+        class Meta:
+            model = Applicant
+            fields = [
+                'status',
+                'notes',  
+            ]
+
 class PetForm(ModelForm):
         class Meta:
             model = Pet
@@ -58,8 +61,6 @@ class PetForm(ModelForm):
                 'current_on_vac',
                 'photo',
                 'spay_neuter',
-                'health_notes', 
-                'notes', 
                 'status', 
                 'sex',
                 'age_group',
@@ -67,10 +68,13 @@ class PetForm(ModelForm):
                 'good_with_kids', 
                 'good_with_dogs',
                 'good_with_cats',
-                'heart_worm_positive',
-                'health concerns',
-                'foster info',
+                'heartworm_positive',
+                'health_concerns',
+                'health_notes', 
+                'notes', 
+                'foster_info',
                 ]
+
 class AgencyForm(ModelForm):
         class Meta:
             model = Agency

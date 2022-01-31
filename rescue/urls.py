@@ -13,10 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from unicodedata import name
+# from unicodedata import name
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+# from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.conf.urls.static import static
 from petrescue import views as petrescue_views
@@ -31,11 +31,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
     path("", petrescue_views.list_pets, name="list_pets"),
+    path("manage/", petrescue_views.staff_home, name="home"),
     path("pets/<int:pk>/", petrescue_views.pet_detail, name="get_pet"),
     path("about_us/", petrescue_views.agency_detail, name="agency_detail"),
     path('agency/', petrescue_views.agency, name='agency'),
-    path('application_detail/<int:pk>/', petrescue_views.application_detail, name='application_detail'),
-    path('application_list/', petrescue_views.application_list, name='application_list'),
+    path('application/<int:pk>/', petrescue_views.application_detail, name='application_detail'),
+    path('applications/', petrescue_views.application_list, name='applications'),
     # path('login/', petrescue_views.login, name='login'),
     path('pet_detail/<int:pk>/', petrescue_views.admin_pet_detail, name='admin_pet_detail'),
     path('pet_list/', petrescue_views.pet_list, name='pet_list'),
