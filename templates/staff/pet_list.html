@@ -3,7 +3,6 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Review your list of pets below!</h1>
-
 <table class="table">
     <thead>
         <tr>
@@ -21,13 +20,13 @@
         <tbody>
     {% for pet in pets %}
         <tr>
-        <a href="{% url 'get_pet' pk=pet.pk %}">
+        <td>{{ pet.status }}
         <td><img src="{{ pet.photo.url }}" class="img-thumbnail" alt="thumbnail-of-{{pet.name}}" style="max-height: 50px;"></td>
-        <td>{{ pet.name }}</td>
+        <td><a href="{% url 'get_pet' pk=pet.pk %}">{{ pet.name }}</a></td>
         <td>{{ pet.breed }}</td>
         <td>{{ pet.sex }}</td>
         <td>{{ pet.size }}</td>
-        <td>{{ pet.date_created }}</td></a>
+        <td>{{ pet.date_created }}</td>
         </tr>
     {% endfor %}
     </tbody>

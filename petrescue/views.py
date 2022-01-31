@@ -41,7 +41,8 @@ def AppView(request):
 
 
 def app_saved(request):
-    return render(request, "petrescue/app_saved.html")
+    agency = get_object_or_404(Agency)
+    return render(request, "petrescue/app_saved.html", {"agency": agency})
 
 
 @login_required
@@ -62,6 +63,7 @@ def agency(request):
 def application_detail(request, pk):
     # application = Applicant.objects.get(pk=pk)
     application = get_object_or_404(Applicant, pk=pk)
+    agency = get_object_or_404(Agency)
     if request.method == 'GET':
         form = AdminAppForm(instance=application)
     else:
@@ -70,18 +72,21 @@ def application_detail(request, pk):
             form.save()
             return redirect(to='applications')
 
-    return render(request, "staff/application_detail.html", {"form": form, "application": application, "pk": pk})
+    return render(request, "staff/application_detail.html", {"form": form, "application": application, "pk": pk, "agency": agency})
 
 
 @login_required
 def application_list(request):
     applications = Applicant.objects.all()
-    return render(request, "staff/application_list.html", {"applications": applications})
+    agency = get_object_or_404(Agency)
+    pets = Pet.objects.all()
+    return render(request, "staff/application_list.html", {"applications": applications, "pets": pets, "agency": agency})
 
 
 @login_required
 def admin_pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
+    agency = get_object_or_404(Agency)
     # applicant = get_object_or_404(Applicant, pk=pk)
     if request.method == 'GET':
         form = PetForm(instance=pet)
@@ -90,14 +95,15 @@ def admin_pet_detail(request, pk):
         if form.is_valid():
             pet = form.save()
             return redirect(to='pet_list')
-    return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk})
+    return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk, "agency": agency})
 
 
 @login_required
 def pet_list(request):
     pets = Pet.objects.all()
     applications = Applicant.objects.all()
-    return render(request, "staff/pet_list.html", {"pets": pets, "applications": applications})
+    agency = get_object_or_404(Agency)
+    return render(request, "staff/pet_list.html", {"pets": pets, "applications": applications, "agency": agency})
 
 
 @login_required
