@@ -1,10 +1,8 @@
-from concurrent.futures.process import _python_exit
-from ctypes import addressof
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser, Applicant, Pet
-from phonenumber_field.modelfields import PhoneNumberField
+from .models import CustomUser, Applicant, Pet, Agency
+# from phonenumber_field.modelfields import PhoneNumberField
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -18,7 +16,7 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email')
 
-class AppForm(forms.ModelForm):
+class AdminAppForm(ModelForm):
         class Meta:
             model = Applicant
             fields = [
@@ -40,11 +38,15 @@ class AppForm(forms.ModelForm):
                 'other_pets_desc',
                 'adopt_reason', 
                 'vet_info',
-                'fenced_yard',      
+                'fenced_yard',
+                'status',
+                'notes',      
         ]
 
-
-class PetForm(forms.ModelForm):
+class AppForm(AdminAppForm):
+        class Meta(AdminAppForm.Meta):
+            exclude = ('status', 'notes', )
+class PetForm(ModelForm):
         class Meta:
             model = Pet
             fields = [
@@ -66,8 +68,29 @@ class PetForm(forms.ModelForm):
                 'good_with_dogs',
                 'good_with_cats',
                 'heart_worm_positive',
+                'health concerns',
+                'foster info',
                 ]
-
-
-
-# can't seem to get phonenumberfield to work here.
+class AgencyForm(ModelForm):
+        class Meta:
+            model = Agency
+            fields = [
+                'name',
+                'agency_owner',
+                'phone',
+                'street_line_1',
+                'street_line_2',
+                'city',
+                'state',
+                'zipcode',
+                'email',
+                'business_hours',
+                'website_info',
+                'description',
+                'about_us',
+                'agency_mission',
+                'facebook_url',
+                'twitter_url',
+                'instagram_url',
+                'logo',      
+        ]

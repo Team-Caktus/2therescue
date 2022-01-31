@@ -1,14 +1,12 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .serializers import FosterSerializer, PetSerializer, AgencySerializer, ApplicantSerializer
+from .serializers import FosterSerializer, PetSerializer
 from rest_framework import generics
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveDestroyAPIView
 from .models import Foster, Pet, Applicant, Agency
 from .forms import AppForm
-from django import forms
-from django.views import View
+# from django import forms
+# from django.views import View
 from django.contrib.auth.decorators import login_required
-
-
 
 class FosterList(generics.ListCreateAPIView):
     queryset = Foster.objects.all()
@@ -63,10 +61,10 @@ def AppView(request):
     # pet = get_object_or_404(Pet, pk=pk)
     form = AppForm(data=request.POST)
     if form.is_valid():
-        applicant = form.save()
+        applicant = form.save(commit=False)
         # applicant.pet_id = pet.pk
         applicant.save()
-        return redirect(to="application_submitted.html")
+        return redirect(to="app_saved")
 
     return render(request, 'petrescue/application.html', {'form': form})
 
@@ -101,8 +99,8 @@ def pet_list(request):
     pets = Pet.objects.all()
     return render(request, "admin/pet_list.html", {"pets": pets})
 
-# def app_submitted():
-#     return render("application_submitted.html")
+def app_saved(request):
+    return render(request, "petrescue/app_saved.html")
 
 
 
