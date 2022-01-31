@@ -194,7 +194,7 @@ AWS_DEFAULT_ACL = 'public-read'
 # reg redux
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = "pet_list"
+LOGIN_REDIRECT_URL = "home"
 
 # 'rescue.storage_backends.MediaStorage'  
 # MEDIA_URL = 'https://teamcaktuspetphotos.s3.amazonaws.com/media/'

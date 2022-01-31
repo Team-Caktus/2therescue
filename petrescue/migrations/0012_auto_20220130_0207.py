@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='agency',
-            name='desciption',
+            name='description',
             field=models.TextField(blank=True, max_length=250),
         ),
         migrations.AddField(

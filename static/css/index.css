@@ -1,33 +1,57 @@
-* {
-    box-sizing: border-box; 
-    margin: 0;
-}
-
-body {
+html {
     font-family: sans-serif;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+body {
+    /* max-width: 60rem; */
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+header.admin {
+    background-color: #035e7b;
+    color: white;
+}
+
+/* 
 nav {
     flex-flow: row nowrap;
     margin: 10px auto;
     justify-content: flex-end;
-}
+} */
 
-.maincontainer {
+/* .maincontainer {
     display: flex;
     flex-flow: row wrap;
     margin: 10px;
-    /* justify-content: space-around; */
+    /* justify-content: space-around;
     padding: 50px;
-}
+} */
 
-.pets-container   {
+/* .pets-container   {
     flex-flow: row wrap;
     width: 100%;
     margin: 10px;
-}
+} */
 
-.pet-card   {
+header a {
+    text-decoration: none;
+}
+/* .pet-card   {
     flex-flow: column nowrap;
     max-width: 30%;
     padding: 10px;
@@ -40,8 +64,13 @@ nav {
     padding: 5px;
     border: 1px solid blue;
     margin: 10px;
-    /* max-width: 310px; */
+    /* max-width: 310px;
     max-width: 30%;
+} */
+
+.pet-photo {
+    max-width: 300px;
+    max-height: auto;
 }
 
 .button {
@@ -69,25 +98,133 @@ nav {
 	top:1px;
 }
 
-.pet-detail {
+/* .pet-detail {
     display: flex;
     flex-flow: row wrap;
     margin: 10px;
     justify-content: space-around;
     padding: 50px;
-}
+} */
 
-.homepage_img {
-    height: 18rem;
+.homepage-img {
+    height: 15rem;
     object-fit: cover;
 }
 
-.homepage_card {
+/* .homepage-card {
     margin: 10px;
     width: 18rem;
     cursor: pointer;
+} */
+
+.card:hover, .card:focus-within {
+    box-shadow: 0 0 0 0.25rem rgba(0, 139, 186, 0.393);
 }
 
-.homepage_card:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+.cards > ul {
+    list-style: none;
+    display: flex;
+}
+
+.card + .card {
+    margin-top: 1.5rem;
+}
+
+@supports (display: grid) {
+    .cards > ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        grid-column-gap: 1.5rem;
+        grid-row-gap:1.5rem;
+    }
+
+    .card + .card {
+        margin-top: 0;
+    }
+}
+
+.card {
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    word-wrap: normal;
+}
+
+.card .text {
+    padding-left: .5rem;
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 1rem;
+}
+
+/* .card p {
+    max-width: 60ch;
+} */
+
+.card .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* filter: grayscale(100%); */
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.card a:focus {
+    outline: none;
+    text-decoration: underline;
+}
+
+.card:focus-within a:focus {
+    text-decoration: none;
+}
+
+.card small {
+    display: block;
+}
+
+.card .text > * + * {
+    margin-top: 0.75rem;
+}
+
+/* .card .text > :last-child {
+    margin-top: auto;
+    padding-top: 0.75rem;
+}  */
+
+.navbar-item:hover {
+    background-color: #035d7b41 !important;
+}
+
+.tags {
+    /* margin-bottom: .15rem; */
+    max-height: 60px;
+}
+
+/* .tags:not(:last-child) {
+    margin-bottom: 0;
+} */
+
+dt {
+    margin-right: .5rem;
+}
+dd {
+    margin-right: 0;
+}
+
+p {
+    margin: 3rem;
 }

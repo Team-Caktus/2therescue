@@ -1,0 +1,39 @@
+{% extends "staff_base.html" %}
+{% load static %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<h1>Review your list of pets below!</h1>
+<!-- <ul class="list-unstyled list-inline"> -->
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Status</th>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Sex</th>
+        <th>Size</th>
+        <th>Date Added</th>
+        <th>New Applications</th>
+        <th>Open Applications</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for pet in pets %}
+        <tr>
+        <a href="{% url 'get_pet' pk=pet.pk %}">
+        <td><img src="{{ pet.photo.url }}" class="img-thumbnail" alt="thumbnail-of-{{pet.name}}" style="max-height: 50px;"></td>
+        <td>{{ pet.name }}</td>
+        <td>{{ pet.breed }}</td>
+        <td>{{ pet.sex }}</td>
+        <td>{{ pet.size }}</td>
+        <td>{{ pet.date_created }}</td>
+        </tr></a>
+    {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+    <h1>Please <a href="/accounts/login/">log in</a> to view this page.</h1>
+    {% endif %}
+{% endblock %}

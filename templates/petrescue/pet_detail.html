@@ -1,25 +1,49 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="pet-detail">
-    <img src="{{ pet.photo.url }}"class="card-img-top img-thumbnail" alt="photo-of-{{pet.name}}" />
-    <h3>{{ pet.name }}</h3>
+<div class="pet-detail card">
+    <img src="{{ pet.photo.url }}"class="pet-photo" alt="photo-of-{{pet.name}}" />
+    <h2 class="card-title">{{ pet.name }}</h2>
+    <div class="card-body">
+        <div class="tags">
+        <ul class="list-inline">
+            <li class="list-inline-item"><span class="tag">{{ pet.sex }}</span></li>
+            <li class="list-inline-item"><span class="tag">{{ pet.age_group }}</span></li>
+            <li class="list-inline-item"><span class="tag">{{ pet.size }}</span></li>
+            {% if pet.heartworm_positive or pet.health_concerns %}<li class="list-inline-item"><span class="tag">Health Issues</span></li>
+            {% else %}{% endif %}
+            </ul>
+          </div>
     <dl class="row">
-        <dt class="col-sm-3">Breed</dt>
-        <dd class="col-sm-9">{{ pet.breed }}</dd>
-        <dt class="col-sm-3">Age</dt>
-        <dd class="col-sm-9">{{ pet.age }}</dd>
-        <dt class="col-sm-3">Weight</dt>
-        <dd class="col-sm-9">{{ pet.size }}</dd>
-        <dt class="col-sm-3">About {{ pet.name }}</dt>
-        <dd class="col-sm-9">{{ pet.description }}</dd>
-        <dt class="col-sm-3">Vaccinations up-to-date</dt>
-        <dd class="col-sm-9">{{ pet.current_on_vac }}</dd>
-        <dt class="col-sm-3">Spayed/Neutered</dt>
-        <dd class="col-sm-9">{{ pet.spay_neuter }}</dd>
-        <dt class="col-sm-3">Time in rescue</dt>
-        <dd class="col-sm-9">{{ pet.date_created }}</dd>
+        <dt>Status</dt>
+        <dd>{{ pet.status }}</dd>
+        <dt>Breed</dt>
+        <dd>{{ pet.breed }}</dd>
+        <dt>Age</dt>
+        <dd>{{ pet.age }}</dd>
+        <dt>Weight</dt>
+        <dd>{{ pet.weight }}</dd>
+        <dt>About {{ pet.name }}</dt>
+        <dd>{{ pet.description }}</dd>
+        <dt>Vaccinations up-to-date</dt>
+        {% if pet.current_on_vac %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
+        <dt>Spayed/Neutered</dt>
+        {% if pet.spay_neuter %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
+        <dt>Good with kids</dt>
+        {% if pet.good_with_kids %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
+        <dt>Good with dogs</dt>
+        {% if pet.good_with_dogs %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
+        <dt>Good with cats</dt>
+        {% if pet.good_with_cats %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
+        <dt>Heartworm positive</dt>
+        {% if pet.heartworm_positive %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
+        <dt>Additional health concerns</dt>
+        {% if pet.health_concerns %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
+        <!-- <dt>Time in rescue</dt>
+        <dd>{{ pet.date_created }}</dd> -->
     </dl>
+    </div>
 </div>
-<a href="{% url 'application' %}" class="button">Apply to Adopt!</a>
+<div id="application"><a href="{% url 'application' %}" class="button">Apply to Adopt!</a></div>
+
 {% endblock %}
