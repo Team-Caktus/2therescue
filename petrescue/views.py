@@ -7,21 +7,25 @@ from .forms import AdminAppForm, AppForm, PetForm, AgencyForm
 # from django import forms
 # from django.views import View
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 def list_pets(request):
-    pets = Pet.objects.all()
+    pets = Pet.objects.filter((Q(status="Available") | Q(status="Adoption Pending")))
     agency = get_object_or_404(Agency)
     return render(request, "petrescue/homepage.html", {"pets": pets, "agency": agency})
+
 
 def pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
     agency = get_object_or_404(Agency)
     return render(request, "petrescue/pet_detail.html", {"pet": pet, "agency": agency})
 
+
 def agency_detail(request):
     agency = get_object_or_404(Agency)
     return render(request, "petrescue/contact_us.html", {"agency": agency})
+
 
 def AppView(request):
     agency = get_object_or_404(Agency)
@@ -34,6 +38,7 @@ def AppView(request):
         return redirect(to="app_saved")
 
     return render(request, 'petrescue/application.html', {"form": form, "agency": agency})
+
 
 def app_saved(request):
     return render(request, "petrescue/app_saved.html")
@@ -52,23 +57,27 @@ def agency(request):
 
     return render(request, "staff/agency.html", {"form": form, "agency": agency})
 
+
 @login_required
 def application_detail(request, pk):
-    applicant = get_object_or_404(Applicant, pk=pk)
+    # application = Applicant.objects.get(pk=pk)
+    application = get_object_or_404(Applicant, pk=pk)
     if request.method == 'GET':
-        form = AdminAppForm(instance=applicant)
+        form = AdminAppForm(instance=application)
     else:
-        form = AdminAppForm(data=request.POST, instance=applicant)
+        form = AdminAppForm(data=request.POST, instance=application)
         if form.is_valid():
-            applicant = form.save()
-            return redirect(to='applications', pk=pk)
+            form.save()
+            return redirect(to='applications')
 
-    return render(request, "staff/application_detail.html", {"form": form, "applicant": applicant, "pk": pk})
+    return render(request, "staff/application_detail.html", {"form": form, "application": application, "pk": pk})
+
 
 @login_required
 def application_list(request):
     applications = Applicant.objects.all()
     return render(request, "staff/application_list.html", {"applications": applications})
+
 
 @login_required
 def admin_pet_detail(request, pk):
@@ -83,18 +92,21 @@ def admin_pet_detail(request, pk):
             return redirect(to='pet_list')
     return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk})
 
+
 @login_required
 def pet_list(request):
     pets = Pet.objects.all()
     applications = Applicant.objects.all()
     return render(request, "staff/pet_list.html", {"pets": pets, "applications": applications})
 
+
 @login_required
 def staff_home(request):
+    agency = get_object_or_404(Agency)
     pets = Pet.objects.all()
     applications = Applicant.objects.all()
-    agency = get_object_or_404(Agency)
     return render(request, "staff/home.html", {"pets": pets, "applications": applications, "agency": agency})
+
 
 @login_required
 def pet_applications(request, pk):
@@ -103,6 +115,7 @@ def pet_applications(request, pk):
     
     return render(request, "staff/application_list.html", {
         "pet": pet, "applications": applications})
+
 
 # @login_required
 # def pet_application_detail(request, pet_pk, applicant_pk):

@@ -3,12 +3,16 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Review your list of applications below!</h1>
-<ul>
-    {% for applicant in applicants %}
-    <a href="{% url 'application_detail' pk=applicant.pk %}"><li>{{ applicant.name }}</li></a>
-{% endfor %}
+<table class="table">
+    <thead>
+      <tr>
+        <th title="Name">
+    {% for application in applications %}
+    <li class="list-inline-item"><ul class="list-unstyled list-inline">
+        <li class="list-inline-item"><a href="{% url 'application_detail' pk=applicant.pk %}"><li>{{ applicant.name }}</li></a></ul></li>
+    {% endfor %}
 </ul>
 {% else %}
-<h1>Please <a href="/accounts/login/">login</a> to view this page.</h1>
+<h1>Please <a href="/accounts/login/">log in</a> to view this page.</h1>
 {% endif %}
 {% endblock %}

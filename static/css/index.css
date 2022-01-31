@@ -22,11 +22,11 @@ h1 {
 h2 {
     font-size: 1rem;
 }
-
-body.admin {
+header.admin {
     background-color: #035e7b;
     color: white;
 }
+
 /* 
 nav {
     flex-flow: row nowrap;
