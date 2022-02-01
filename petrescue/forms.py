@@ -44,10 +44,7 @@ class AppForm(ModelForm):
 class AdminAppForm(ModelForm):
         class Meta:
             model = Applicant
-            fields = [
-                'status',
-                'notes',  
-            ]
+            fields = '__all__'
 
 class PetForm(ModelForm):
         class Meta:

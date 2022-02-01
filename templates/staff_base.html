@@ -26,14 +26,17 @@
     </div>
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="{% url 'pet_list' %}" >Pets</a>
-        <a class="navbar-item" href="{% url 'applications' %}" >Applications</a>
-        <a class="navbar-item" href="{% url 'agency' %}" >Rescue info</a>
-        </div>
+       <ul class="list-unstyled list-inline">
+        <li class="list-inline-item"><a class="navbar-item" href="{% url 'pet_list' %}" >Pets</a></li>
+        <li class="list-inline-item"><a class="navbar-item" href="{% url 'applications' %}" >Applications</a></li>
+        <li class="list-inline-item"><a class="navbar-item" href="{% url 'agency' %}" >Rescue info</a></li>
+        </ul> 
+      </div>
       <div class="navbar-end">
         {% if request.user.is_authenticated %}
-          <a class="navbar-item" href="{% url 'list_pets' %}" >Preview Site </a>
-          <a class="navbar-item" href="/accounts/logout/"> Logout</a>
+        <ul class="list-unstyled list-inline">
+          <li class="list-inline-item"><a class="navbar-item" href="{% url 'list_pets' %}" >Preview Site </a></li>|
+          <li class="list-inline-item"><a class="navbar-item" href="/accounts/logout/"> Logout</a></li></ul>
         {% else %}
         <a class="navbar-item" href="/accounts/login/">Login</a>
         {% endif %}
