@@ -30,7 +30,7 @@ def pet_detail(request, pk):
 
 def agency_detail(request):
     agency = get_object_or_404(Agency)
-    return render(request, "petrescue/contact_us.html", {"agency": agency})
+    return render(request, "petrescue/about_us.html", {"agency": agency})
 
 
 def AppView(request):

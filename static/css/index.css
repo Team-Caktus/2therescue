@@ -1,5 +1,6 @@
 html {
     font-family: sans-serif;
+    text-rendering: optimizeLegibility;
 }
 
 * {
@@ -19,12 +20,19 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.title {
+    color: white !important;
+}
+
 h2 {
     font-size: 1rem;
 }
-header.admin {
-    background-color: #035e7b;
+header {
+    /* background-color: #000cb8; */
     color: white;
+    /* padding: 3rem 1.5rem; */
+    /* box-shadow: 0px 10px 14px -7px #124E78; */
+    /* box-shadow: inset 10px 10px 14px -10px #59C3C3; */
 }
 
 /* 
@@ -88,7 +96,21 @@ header a {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
 }
-
+/* 
+.button {
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    color: #363636;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: calc(0.5em - 1px);
+    text-align: center;
+    white-space: nowrap;
+}
 .button:hover {
 	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
 	background-color:#408c99;
@@ -96,7 +118,7 @@ header a {
 .button:active {
 	position:relative;
 	top:1px;
-}
+} */
 
 /* .pet-detail {
     display: flex;
@@ -228,3 +250,22 @@ dd {
 p {
     margin: 3rem;
 }
+
+footer {
+    padding: 3rem 1.5rem 6rem;
+    margin-top: auto;
+    /* position: absolute; */
+}
+
+form {
+    margin: 1rem;
+    padding: 2rem;
+    box-shadow: 1px 4px 41px -18px rgba(30,56,136,1);
+    -webkit-box-shadow: 1px 4px 41px -18px rgba(30,56,136,1);
+    -moz-box-shadow: 1px 4px 41px -18px rgba(30,56,136,1);
+    border-radius: 1rem;
+}
+
+/* .navbar {
+    background-color: #158cba !important;
+} */

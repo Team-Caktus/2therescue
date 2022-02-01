@@ -3,6 +3,7 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Review your list of applications below!</h1>
+
 <table class="table">
     <thead>
       <tr>
@@ -17,7 +18,15 @@
             <tbody>
         {% for applicant in applicants %}
             <tr>
-            <td>{{ applicant.status }}</td>
+            {% if applicant.status == "Open" %}
+            <td><i class="fas fa-exclamation-circle"></i>{{ applicant.status }}</td>
+            {% elif applicant.status == "Pending" %}
+            <td><i class="fas fa-question-circle"></i>{{ applicant.status }}</td>
+            {% elif applicant.status == "Approved" %}
+            <td><i class="fas fa-check-circle"></i>{{ applicant.status }}</td>
+            {% else %}
+            <td><i class="fas fa-ban"></i></i>{{ applicant.status }}</td>
+            {% endif %}
             <td>{{ applicant.pet_id }}</td>
             <td><a href="{% url 'application_detail' pk=applicant.pk %}">{{ applicant.name }}</a></td>
             <td>{{ applicant.phone }}</td>
