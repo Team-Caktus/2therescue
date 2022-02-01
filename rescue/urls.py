@@ -42,5 +42,6 @@ urlpatterns = [
     # path('cms/', include(wagtailadmin_urls)),
     # path('documents/', include(wagtaildocs_urls)),
     path('application/', petrescue_views.AppView, name='application'),
-    path('success/', petrescue_views.app_saved, name='app_saved')
+    path('success/', petrescue_views.app_saved, name='app_saved'),
+    path('search', petrescue_views.search_by_sex_or_age_size, name='search_by_sex_or_age_size')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from http.client import TOO_MANY_REQUESTS
 from pathlib import Path
 import environ
 import os
@@ -194,7 +195,8 @@ AWS_DEFAULT_ACL = 'public-read'
 # reg redux
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "/manage/"
+REGISTRATION_OPEN = True
 
 # 'rescue.storage_backends.MediaStorage'  
 # MEDIA_URL = 'https://teamcaktuspetphotos.s3.amazonaws.com/media/'

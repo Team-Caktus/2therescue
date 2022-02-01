@@ -16,6 +16,12 @@ def list_pets(request):
     return render(request, "petrescue/homepage.html", {"pets": pets, "agency": agency})
 
 
+def search_by_sex_or_age_size(request):
+    query = request.GET.get('q', None)
+    results = Pet.objects.filter( Q(sex__icontains=query) | Q(size__icontains=query) | Q(age_group__icontains=query))
+    return render(request, "petrescue/homepage.html", {"pets": results})
+
+
 def pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
     agency = get_object_or_404(Agency)
