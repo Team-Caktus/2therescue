@@ -21,6 +21,7 @@ def search_by_sex_or_age_size(request):
     results = Pet.objects.filter( Q(sex__icontains=query) | Q(size__icontains=query) | Q(age_group__icontains=query))
     return render(request, "petrescue/homepage.html", {"pets": results})
 
+
 def pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
     agency = get_object_or_404(Agency)
@@ -68,27 +69,46 @@ def agency(request):
 @login_required
 def application_detail(request, pk):
     # application = Applicant.objects.get(pk=pk)
-    application = get_object_or_404(Applicant, pk=pk)
+    applicant = get_object_or_404(Applicant, pk=pk)
     agency = get_object_or_404(Agency)
     if request.method == 'GET':
-        form = AdminAppForm(instance=application)
+        form = AdminAppForm(instance=applicant)
     else:
-        form = AdminAppForm(data=request.POST, instance=application)
+        form = AdminAppForm(data=request.POST, instance=applicant)
         if form.is_valid():
             form.save()
             return redirect(to='applications')
 
-    return render(request, "staff/application_detail.html", {"form": form, "application": application, "pk": pk, "agency": agency})
+    return render(request, "staff/application_detail.html", {"form": form, "application": applicant, "pk": pk, "agency": agency})
 
+# @login_required
+# def admin_pet_detail(request, pk):
+#     pet = get_object_or_404(Pet, pk=pk)
+#     agency = get_object_or_404(Agency)
+#     # applicant = get_object_or_404(Applicant, pk=pk)
+#     if request.method == 'GET':
+#         form = PetForm(instance=pet)
+#     else:
+#         form = PetForm(request.POST, request.FILES, instance=pet)
+#         if form.is_valid():
+#             pet = form.save()
+#             return redirect(to='pet_list')
+#     return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk, "agency": agency})
 
 @login_required
 def application_list(request):
-    applications = Applicant.objects.all()
+    applicants = Applicant.objects.all()
     agency = get_object_or_404(Agency)
     pets = Pet.objects.all()
     
-    return render(request, "staff/application_list.html", {"applications": applications, "pets": pets, "agency": agency})
+    return render(request, "staff/application_list.html", {"applicants": applicants, "pets": pets, "agency": agency})
 
+@login_required
+def pet_list(request):
+    pets = Pet.objects.all()
+    applications = Applicant.objects.all()
+    agency = get_object_or_404(Agency)
+    return render(request, "staff/pet_list.html", {"pets": pets, "applications": applications, "agency": agency})
 
 @login_required
 def admin_pet_detail(request, pk):
@@ -117,6 +137,7 @@ def add_pet(request):
             pet.save()
             return redirect(to='pet_list')
     return render(request, "staff/add_pet.html", {"form": form, "agency": agency})
+
 
 
 @login_required
