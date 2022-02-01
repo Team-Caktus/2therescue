@@ -54,7 +54,7 @@ def app_saved(request):
 @login_required
 def agency(request):
     agency = get_object_or_404(Agency)
-    agency = Agency.objects.all()
+    # agency = Agency.objects.all()
     if request.method == 'GET':
         form = AgencyForm(instance=agency)
     else:
@@ -80,7 +80,7 @@ def application_detail(request, pk):
             return redirect(to='applications')
 
     return render(request, "staff/application_detail.html", {"form": form, "applicant": applicant, "pk": pk, "agency": agency})
-    
+
 
 @login_required
 def application_list(request):
@@ -118,7 +118,6 @@ def add_pet(request):
             pet.save()
             return redirect(to='pet_list')
     return render(request, "staff/add_pet.html", {"form": form, "agency": agency})
-
 
 
 @login_required
