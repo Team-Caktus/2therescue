@@ -21,7 +21,6 @@ def search_by_sex_or_age_size(request):
     results = Pet.objects.filter( Q(sex__icontains=query) | Q(size__icontains=query) | Q(age_group__icontains=query))
     return render(request, "petrescue/homepage.html", {"pets": results})
 
-
 def pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
     agency = get_object_or_404(Agency)
@@ -99,11 +98,24 @@ def admin_pet_detail(request, pk):
     if request.method == 'GET':
         form = PetForm(instance=pet)
     else:
-        form = PetForm(data=request.POST, instance=pet)
+        form = PetForm(request.POST, request.FILES, instance=pet)
         if form.is_valid():
             pet = form.save()
             return redirect(to='pet_list')
     return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk, "agency": agency})
+
+@login_required
+def add_pet(request):
+    agency = get_object_or_404(Agency)
+    if request.method == 'GET':
+        form = PetForm()
+    else:
+        form = PetForm(request.POST, request.FILES)
+        if form.is_valid():
+            pet = form.save()
+            pet.save()
+            return redirect(to='pet_list')
+    return render(request, "staff/add_pet.html", {"form": form, "agency": agency})
 
 # @login_required
 # def add_pet (request, pk):

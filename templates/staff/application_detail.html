@@ -5,7 +5,7 @@
 <h1>Review the application and update the status below!</h1>  
 <form action="{% url 'application' %}" method="PATCH">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form }}
     <div>
       <button type="submit">Apply changes</button>
     </div>
