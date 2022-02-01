@@ -80,20 +80,7 @@ def application_detail(request, pk):
             return redirect(to='applications')
 
     return render(request, "staff/application_detail.html", {"form": form, "applicant": applicant, "pk": pk, "agency": agency})
-
-# @login_required
-# def admin_pet_detail(request, pk):
-#     pet = get_object_or_404(Pet, pk=pk)
-#     agency = get_object_or_404(Agency)
-#     # applicant = get_object_or_404(Applicant, pk=pk)
-#     if request.method == 'GET':
-#         form = PetForm(instance=pet)
-#     else:
-#         form = PetForm(request.POST, request.FILES, instance=pet)
-#         if form.is_valid():
-#             pet = form.save()
-#             return redirect(to='pet_list')
-#     return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk, "agency": agency})
+    
 
 @login_required
 def application_list(request):
