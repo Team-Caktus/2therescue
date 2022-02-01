@@ -66,6 +66,7 @@ def agency(request):
     return render(request, "staff/agency.html", {"form": form, "agency": agency})
 
 
+
 @login_required
 def application_detail(request, pk):
     # application = Applicant.objects.get(pk=pk)
@@ -106,25 +107,20 @@ def admin_pet_detail(request, pk):
     return render(request, "staff/pet_detail.html", {"form": form, "pet": pet, "pk": pk, "agency": agency})
 
 
+
+
 @login_required
 def add_pet(request):
-    form = PetForm
-    form = form(request.POST or None)
-    if request.method == "POST":
-        form = PetForm(data=request.POST)
-    if form.is_valid():
-        pet = form.save()
-        pet.save()
-        return redirect(to="pet_list")
-            
-    else:
+    agency = get_object_or_404(Agency)
+    if request.method == 'GET':
         form = PetForm()
-
-    return render(request, "staff/pet_detail.html", {"form": form})
-
-
-
-
+    else:
+        form = PetForm(data=request.POST)
+        if form.is_valid():
+            pet = form.save()
+            pet.save()
+            return redirect(to='pet_list')
+    return render(request, "staff/add_pet.html", {"form": form, "agency": agency})
 # @login_required
 # def add_pet (request, pk):
 #     pet = get_object_or_404(Pet, pk=pk)
