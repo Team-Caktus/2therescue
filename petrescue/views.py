@@ -79,7 +79,7 @@ def application_detail(request, pk):
             form.save()
             return redirect(to='applications')
 
-    return render(request, "staff/application_detail.html", {"form": form, "application": applicant, "pk": pk, "agency": agency})
+    return render(request, "staff/application_detail.html", {"form": form, "applicant": applicant, "pk": pk, "agency": agency})
 
 # @login_required
 # def admin_pet_detail(request, pk):
@@ -103,12 +103,6 @@ def application_list(request):
     
     return render(request, "staff/application_list.html", {"applicants": applicants, "pets": pets, "agency": agency})
 
-@login_required
-def pet_list(request):
-    pets = Pet.objects.all()
-    applications = Applicant.objects.all()
-    agency = get_object_or_404(Agency)
-    return render(request, "staff/pet_list.html", {"pets": pets, "applications": applications, "agency": agency})
 
 @login_required
 def admin_pet_detail(request, pk):
