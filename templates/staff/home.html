@@ -8,6 +8,7 @@
     <li class="list-inline-item"><a class="navbar-item" href="{% url 'applications' %}" >Applications</a></li>
     <li class="list-inline-item"><a class="navbar-item" href="{% url 'agency' %}" >Rescue info</a></li>
 </ul> 
+<a class="button" href="{% url 'add_pet' %}">Add Pet</a>
 {% else %}
 <h1>Please <a href="/accounts/login/">login</a> to view this page.</h1>
 {% endif %}

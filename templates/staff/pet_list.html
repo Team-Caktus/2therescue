@@ -6,9 +6,9 @@
 <table class="table">
     <thead>
         <tr>
-        <th>Status</th>
-        <th>Photo</th>
-        <th>Name</th>
+        <th></th>
+        <th>Adoption Status</th>
+        <th>Pet Name</th>
         <th>Breed</th>
         <th>Sex</th>
         <th>Size</th>
@@ -19,10 +19,10 @@
         </thead>
         <tbody>
     {% for pet in pets %}
-        <tr>
-        <td>{{ pet.status }}
+        <tr>   
         <td><img src="{{ pet.photo.url }}" class="img-thumbnail" alt="thumbnail-of-{{pet.name}}" style="max-height: 50px;"></td>
-        <td><a href="{% url 'admin_pet_detail' pk=pet.pk %}">{{ pet.name }}</a></td>
+        <td>{{ pet.status }}<td>
+        <a href="{% url 'admin_pet_detail' pk=pet.pk %}">{{ pet.name }}</a></td>
         <td>{{ pet.breed }}</td>
         <td>{{ pet.sex }}</td>
         <td>{{ pet.size }}</td>
