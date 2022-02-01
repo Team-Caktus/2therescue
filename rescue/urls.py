@@ -37,6 +37,7 @@ urlpatterns = [
     path('applications/', petrescue_views.application_list, name='applications'),
     # path('login/', petrescue_views.login, name='login'),
     path('pet_detail/<int:pk>/', petrescue_views.admin_pet_detail, name='admin_pet_detail'),
+    path('add_pet/', petrescue_views.add_pet, name='add_pet'),
     path('pet_list/', petrescue_views.pet_list, name='pet_list'),
     # path('cms/', include(wagtailadmin_urls)),
     # path('documents/', include(wagtaildocs_urls)),
