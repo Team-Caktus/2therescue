@@ -1,0 +1,28 @@
+html {
+    font-family: sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+body {
+    /* max-width: 60rem; */
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+header.admin {
+    background-color: #035e7b;
+    color: white;
+}

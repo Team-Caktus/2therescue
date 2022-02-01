@@ -2,8 +2,10 @@
 {% load static %}
 {% block content %}
 {% if request.user.is_authenticated %}
-<h1>Review the application and update the status below!</h1>  
-<form action="{% url 'application' %}" method="PATCH">
+<h1>Review the application and update the status below!</h1> 
+  
+
+<form action="{% url 'application_detail' pk=applicant.pk %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <div>

@@ -15,15 +15,14 @@
             </tr>
             </thead>
             <tbody>
-    {% for application in applications %}
+        {% for applicant in applicants %}
             <tr>
-            <a href="{% url 'application_detail' pk=application.pk %}">
             <td>{{ applicant.status }}</td>
             <td>{{ applicant.pet_id }}</td>
-            <td>{{ applicant.name }}</td>
+            <td><a href="{% url 'application_detail' pk=applicant.pk %}">{{ applicant.name }}</a></td>
             <td>{{ applicant.phone }}</td>
             <td>{{ applicant.email }}</td>
-            <td>{{ applicant.date_created }}</td></a>
+            <td>{{ applicant.date_created }}</td>
             </tr>
         {% endfor %}
         </tbody>
