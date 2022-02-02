@@ -4,12 +4,151 @@
 {% if request.user.is_authenticated %}
 <h1>Review the application and update the status below!</h1> 
   
-
-<form action="{% url 'application_detail' pk=applicant.pk %}" method="POST">
+<div>
+  <form class= "column" action="{% url 'application' %}" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.name_of_field }}
+    
+    <div class="columns is-multiline">
+      <div class="column">
+        <label class="label">
+        Applicant's Full Name</label>
+        {{ form.name }}
+      </div>
+      <div class="column">
+        <label class="label">
+        Phone Number</label>
+        {{ form.phone }}
+      </div>
+      <div class="column">
+        <label class="label">
+        E-Mail</label>
+        {{ form.email }}
+      </div>
+      <div class="column">
+        <label class="label">
+        Street Address</label>
+        {{ form.street_line_1 }}
+      </div>
+      <div class="column">
+        <label class="label">
+        Street Address 2</label>
+        {{ form.street_line_2 }}
+      </div>
+      <div class="column">
+        <label class="label">
+        City</label>
+        {{ form.city }}
+      </div>
+      <div class="column">
+        <label class="label">
+        State</label>
+        {{ form.state }}
+      </div>
+      <div class="column">
+        <label class="label">
+        Zipcode</label>
+        {{ form.zipcode }}
+      </div>
+      
+  </div>
+  <br>
+  <div class="columns is-multiline">
+    <div class="column">
+      <label class="label">
+        Primary Owner's Full Name</label>
+      {{ form.primary_owner }}
+    </div>
+    <div class="column">
+      <label class="label">
+      Type of Residence</label>
+      {{ form.current_residence }}
+    </div>
+    <div class="column">
+      <label class="label">
+        Why are you adopting?</label>
+      {{ form.adopt_reason }}
+    </div>
+    <div class="column">
+      <label class="label">
+      Name of Pet Applying For</label>
+      {{ form.pet_id }}
+    </div>
+    <div class="column">
+      <label class="label">
+      Number of Adults</label>
+      {{ form.num_adults }}
+    </div>
+    <div class="column">
+      <label class="label">
+      Number of Children</label>
+      {{ form.num_children }}
+    </div>
+    <div class="column mt-4">
+      {{ form.fenced_yard }}
+      <label class="checkbox">
+      Is your yard fenced?</label>
+    </div>
+</div>
+
+<div>
+  <div class="column">
+    <label class="label">
+      Please list the ages of your children below.</label>
+      {{ form.ages_children }}
+  </div> 
+</div>
+
+<div class='column'>
+  <div class="column">
+    {{ form.other_pets }}
+    <label class="checkbox">
+      Are there other pets in your home?</label>
+  </div> 
+</div>
+
+<div class='columns'>
+  <div class="column">
+    <label class="label">
+      Please list your current pets below.</label>
+      {{ form.other_pets_desc }}
+  </div> 
+
+  <div class="column">
+    <label class="label">
+      Veterinarian Information</label>
+      {{ form.vet_info }}
+  </div> 
+</div>
+
+<div class="column">
+  <label class="label">
+  Application Status</label>
+  {{ form.status }}
+</div>
+
+<div class="column">
+  <label class="label">
+Applicant Notes</label>
+{{ form.notes }}
+</div>
+
+<div class="columns">
+<div class="column">
+  <label class="label">
+Application Date</label>
+{{ applicant.date_created|date:"SHORT_DATE_FORMAT" }}
+</div>
+<div class="column">
+  <label class="label">
+Application Date Updated</label>
+{{ applicant.date_updated|date:"SHORT_DATE_FORMAT" }}
+</div>
+</div>
+
+
     <div>
-      <button type="submit">Apply changes</button>
+      <button class="button is-info" type="submit">Apply changes</button>
     </div>
 </form>
 {% else %}
