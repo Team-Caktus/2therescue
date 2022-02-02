@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
   <p class="lead">Click on a dog below for more details or to apply to adopt!</p>
-  <div class="cards">
-  <ul class="list-unstyled list-inline">
-    <form action={% url 'search_by_sex_or_age_size' %} method="GET">
+  <form action="{% url 'search_by_sex_or_age_size' %}" method="GET">
       <input type="text" name="q" placeholder="Search by age, sex or size">
-      <button type="submit" >Search</button>
+      <button type="submit" class="button">Search</button>
     </form>
+  <div class="cards">    
+  <ul class="list-unstyled list-inline">
+
     {% for pet in pets %}
     <li class="list-inline-item">
       <div class="card homepage-card">
