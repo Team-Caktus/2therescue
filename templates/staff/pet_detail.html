@@ -1,6 +1,7 @@
 {% extends "staff_base.html" %}
 {% load static %}
 {% block content %}
+
 {% if request.user.is_authenticated %}
 <div>
       <form action="{% url 'admin_pet_detail' pk=pet.pk %}" method="POST" enctype="multipart/form-data">

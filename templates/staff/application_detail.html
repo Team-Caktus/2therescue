@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 {% if request.user.is_authenticated %}
-<p class="lead">Review the application and update the status below</p> 
 
+<p class="lead">Review the application and update the status below</p> 
 
   <form class= "column" action="{% url 'application' %}" method="POST">
     {% csrf_token %}
@@ -145,7 +145,7 @@ Application Date Updated</label>
 {{ applicant.date_updated|date:"SHORT_DATE_FORMAT" }}
 </div>
 </div>
-
+    
     <div>
       <button class="button is-info" type="submit">Apply changes</button>
     </div>

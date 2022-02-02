@@ -4,7 +4,9 @@
 
 
 <div>
+
 <form class="column" action="{% url 'add_pet' %}" method="POST" enctype="multipart/form-data">
+
     {% csrf_token %}
     {{ form.name_of_field }}
     
