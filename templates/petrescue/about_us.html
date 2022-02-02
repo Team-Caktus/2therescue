@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="maincontainer">
-</div>
+
+<ul class="list-unstyled">
+<li>{{ agency.name }}</li>
+<li>{{ agency.phoneNumber }}</li>
+<li>{{ agency.street_line_1 }}</li>
+<li>{{ agency.street_line_2 }}</li>
+<li>{{ agency.city }}</li>
+<li>{{ agency.state }}</li>
+<li>{{ agency.zipcode }}</li>
+<li>{{ agency.email }}</li>
+<li>
+</ul>
+
 {% endblock %}

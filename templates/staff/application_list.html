@@ -3,26 +3,39 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Review your list of applications below!</h1>
+
 <table class="table">
     <thead>
       <tr>
+            <th></th>
             <th>Status</th>
             <th>Pet Name</th>
             <th>Applicant Name</th>
             <th>Applicant Phone</th>
             <th>Applicant Email</th>
             <th>Date Submitted</th>
+            <th></th>
             </tr>
             </thead>
             <tbody>
         {% for applicant in applicants %}
             <tr>
+            {% if applicant.status == "Open" %}
+            <td><i class="fas fa-exclamation-circle open"></i></td>
+            {% elif applicant.status == "Pending" %}
+            <td><i class="fas fa-question-circle pending"></i></td>
+            {% elif applicant.status == "Approved" %}
+            <td><i class="fas fa-check-circle approved"></i></td>
+            {% else %}
+            <td><i class="fas fa-ban denied"></i></td>
+            {% endif %}
             <td>{{ applicant.status }}</td>
             <td>{{ applicant.pet_id }}</td>
             <td><a href="{% url 'application_detail' pk=applicant.pk %}">{{ applicant.name }}</a></td>
             <td>{{ applicant.phone }}</td>
             <td>{{ applicant.email }}</td>
-            <td>{{ applicant.date_created }}</td>
+            <td>{{ applicant.date_created|date:"SHORT_DATE_FORMAT" }}</td>
+            <td><a href="{% url 'application_detail' pk=applicant.pk %}"><i class="far fa-edit"></i></a></td>
             </tr>
         {% endfor %}
         </tbody>

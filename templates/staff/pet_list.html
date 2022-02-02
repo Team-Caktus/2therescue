@@ -13,6 +13,7 @@
         <th>Sex</th>
         <th>Size</th>
         <th>Date Added</th>
+        <th></th>
         <!-- <th>New Applications</th>
         <th>Open Applications</th> -->
         </tr>
@@ -26,7 +27,8 @@
         <td>{{ pet.breed }}</td>
         <td>{{ pet.sex }}</td>
         <td>{{ pet.size }}</td>
-        <td>{{ pet.date_created }}</td>
+        <td>{{ pet.date_created|date:"SHORT_DATE_FORMAT" }}</td>
+        <td><a href="{% url 'admin_pet_detail' pk=pet.pk %}"><i class="far fa-edit"></i></a></td>
         </tr>
     {% endfor %}
     </tbody>
