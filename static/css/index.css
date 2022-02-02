@@ -8,7 +8,15 @@
 body {
     /* max-width: 60rem; */
     margin: 0 auto;
-    padding: 1rem;
+    padding: 1rem;    
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.cover {
+
+    background-repeat: no-repeat;
 }
 
 h1 {
@@ -37,13 +45,15 @@ header a {
 }
 
 .pet-photo {
-    max-width: 100%;
-    max-height: auto;
+    max-height: 30rem;
+    width: auto; 
+    /* object-fit: cover; */
+    margin: 0 auto;
     border-radius: 1rem;
 }
 
 .homepage-img {
-    height: 15rem;
+    height: 18rem;
     object-fit: cover;
 }
 
@@ -51,16 +61,16 @@ header a {
     box-shadow: 1px 4px 41px -18px rgba(30,56,136,1);
 }
 
-.cards > ul {
+/* .cards > ul {
     list-style: none;
     display: flex;
-}
+} */
 
 .card + .card {
     margin-top: 1.5rem;
 }
 
-@supports (display: grid) {
+/* @supports (display: grid) {
     .cards > ul {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -71,7 +81,7 @@ header a {
     .card + .card {
         margin-top: 0;
     }
-}
+} */
 
 .card {
     border-radius: 0.25rem;
@@ -79,6 +89,9 @@ header a {
     flex-direction: column;
     position: relative;
     word-wrap: normal;
+    width: 20rem;    
+    margin: .5rem .5rem .75rem .5rem;
+
 }
 
 .card .text {
@@ -89,6 +102,10 @@ header a {
     font-size: 1rem;
 }
 
+.card-title {
+    font-size: 2.5rem;
+    padding: 1rem;
+}
 /* .card p {
     max-width: 60ch;
 } */
@@ -122,9 +139,9 @@ header a {
     text-decoration: none;
 }
 
-.card small {
+/* .card small {
     display: block;
-}
+} */
 
 .card .text > * + * {
     margin-top: 0.75rem;
@@ -136,7 +153,7 @@ header a {
 }  */
 
 .navbar-item:hover {
-    background-color: #158CBA !important;
+    background-color: #158bba45 !important;
 }
 
 /* .tags {
@@ -149,10 +166,10 @@ header a {
     color: white !important;
 }
 
-.tile .tag {
+/* .tile .tag {
     font-size: 1.5rem;
     border-radius: 1rem;
-}
+} */
 
 dt {
     margin-right: .5rem;
@@ -188,4 +205,45 @@ footer {
     background-color: #3db39f;
     color: white;
     text-decoration: none;
+}
+/* 
+.card {
+    min-width: 18rem !important;
+    margin: 2rem !important;
+} */
+
+.pet-name {
+    font-size: 3rem;
+    padding: 1rem;
+}
+
+/* .about {
+    font-size: 2.5rem;
+} */
+.tag1 {
+    color: #158CBA !important;
+    background-color: white !important;
+    border: 1px solid #158CBA;
+    border-radius: 1rem;
+}
+
+.blue {
+    background-color: #158bba58;
+}
+
+.big-button {
+    background-color: #3db39f;
+    color: white;
+    text-decoration: none;
+    font-size: 3rem;
+    border: .5px solid white; 
+    box-shadow: 1px 4px 41px -18px rgba(30,56,136,1);
+}
+
+.big-button a {
+    text-decoration:none;
+}
+
+.up {
+    font-size: 1.5rem;
 }

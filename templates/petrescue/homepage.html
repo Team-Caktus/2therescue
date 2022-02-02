@@ -2,14 +2,11 @@
 {% load static %}
 {% block content %}
 <container class="level">
-  <div class="level-left">
   <p class="lead">Click on a dog below for more details or to apply to adopt!</p>
-</div>
-  <div class="level-right">
   <form action="{% url 'search_by_sex_or_age_size' %}" method="GET">
       <div class="field has-addons">
         <div class="control"> 
-    <input class="input" type="text" name="q" placeholder="Enter search term"></div> 
+    <input class="input is-expanded" type="text" name="q" placeholder="Enter search term"></div> 
     <div class="control"><button type="submit" class="button">Search</button>
       </div>
       </div>
@@ -22,27 +19,25 @@
     {% for pet in pets %}
     <li class="list-inline-item">
       <div class="card homepage-card">
+        <h2 class="card-title has-text-centered"><a href="{% url 'get_pet' pk=pet.pk %}">{{ pet.name }}</a></h2>
         <img src="{{ pet.photo.url }}" class="card-img-top img-thumbnail homepage-img" alt="photo-of-{{pet.name}}">
           <div class="card-body">
             <div class="tags">
             <ul class="list-inline">
-              <li class="list-inline-item"><span class="tag">{{ pet.sex }}</span></li>
-              <li class="list-inline-item"><span class="tag">{{ pet.age_group }}</span></li>
-              <li class="list-inline-item"><span class="tag">{{ pet.size }}</span></li>
-              {% if pet.heartworm_positive or pet.health_concerns %}<li class="list-inline-item"><span class="tag">Health Issues</span></li>
+              <li class="list-inline-item"><span class="tag is-medium">{{ pet.status }}</span></li>
+              <li class="list-inline-item"><span class="tag is-medium">{{ pet.sex }}</span></li>
+              <li class="list-inline-item"><span class="tag is-medium">{{ pet.age_group }}</span></li>
+              <li class="list-inline-item"><span class="tag is-medium">{{ pet.size }}</span></li>
+              {% if pet.heartworm_positive or pet.health_concerns %}<li class="list-inline-item"><span class="tag is-medium">Health Issues</span></li>
               {% else %}{% endif %}
             </ul>
           </div>
           <div class="card-body text">
-            <h2 class="card-title"><a href="{% url 'get_pet' pk=pet.pk %}">{{ pet.name }}</a></h2>
-          <dl class="row">
-            <dt class="col-sm-3">Breed</dt>
-            <dd class="col-sm-9">{{ pet.breed }}</dd>
-            <dt class="col-sm-3">Age</dt>
-            <dd class="col-sm-9">{{ pet.age }}</dd>
-            <dt class="col-sm-3">Weight</dt>
-            <dd class="col-sm-9">{{ pet.weight }}</dd>
-          </dl>
+          <ul class="list-unstyled">
+            <li><b>Breed</b> {{ pet.breed }}</li>
+            <li><b>Age</b> {{ pet.age }}</li>
+            <li><b>Weight</b> {{ pet.weight }}</li>
+          </ul>
         </div>
       </div>
     </li>

@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}" />
 </head>
-<body>
+<body style="background-image: url({% static 'images/background.svg' %});">
     <header class="border-bottom header">
-    <nav class="navbar has-shadow is spaced level" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-shadow is spaced level" style="background-color: transparent;" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
   <a class="navbar-item" href="{% url 'list_pets' %}"><h1>{{ agency.name }}</h1></a>
   </div>
@@ -25,7 +25,7 @@
     <div class="navbar-end">
       {% if request.user.is_authenticated %}
         <ul class="list-unstyled list-inline">
-          <li class="list-inline-item"><a class="navbar-item" href="{% url 'home' %}" ><i class="fas fa-tools"></i>Manage Site</a></li>|
+          <li class="list-inline-item"><a class="navbar-item" href="{% url 'pet_list' %}" ><i class="fas fa-tools"></i>Manage Site</a></li>|
           <li class="list-inline-item"><a class="navbar-item" href="/accounts/logout/"><i class="fas fa-door-open"></i><span style="color: transparent; font-size: .01px;">L</span>ogout</a></li></ul>
         {% else %}{% endif %}</div>
     </div>

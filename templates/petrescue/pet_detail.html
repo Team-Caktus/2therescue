@@ -2,39 +2,36 @@
 {% load static %}
 {% block content %}
 
-<div class="tile is-ancestor box">
-    <div class="tile is-8 is-vertical is-parent level">
-        <div class="tile is-child is-vertical level-right"><h1 class="title">{{ pet.name }}</h1></div>
-    <div class="tile is-child is-vertical"><img src="{{ pet.photo.url }}" class="pet-photo" alt="photo-of-{{pet.name}}" /></div>
-    <div class="tile is-child is vertical">
-        <ul class="level">
-            <li class="lit-inline-item"><span class="tag">{{ pet.status }}</span></li>
-            <li class="lit-inline-item"><span class="tag">{{ pet.age_group }}</span></li>
-            <li class="list-inline-item"><span class="tag">{{ pet.size }}</span></li>
-            {% if pet.heartworm_positive or pet.health_concerns %}<li class="list-inline-item"><span class="tag">Health Issues</span></li>
+<div class="box blue">
+            <div class="tile is-ancestor">
+                <div class="tile is-4 is-parent is-vertical box">
+                    <div class="tile is-child is-flex is-justify-content-space-around">
+            <div><img src="{{ pet.photo.url }}" class="pet-photo" alt="photo-of-{{pet.name}}" /></div></div>
+                <div class="tile is-child">
+<div class="tags" style="margin-bottom: 1rem;">
+<span class="tag tag1 is-large">{{ pet.status }}</span><span class="tag tag1 is-large">{{ pet.age_group }}</span><span class="tag tag1 is-large">{{ pet.size }}</span>
+            {% if pet.heartworm_positive or pet.health_concerns %}<span class="tag tag1 is-large">Health Issues</span>
             {% else %}{% endif %}
-            </ul>
           </div>
-          </div>
+                </div>
+            </div>
+                <div class="tile is-8 is-parent is-vertical">
+                    <a href="{% url 'application' %}"><div class="tile is-child is-flex is-justify-content-space-around box big-button mb-1">Apply to Adopt!</div></a>
+                        <div class="tile is-child box is-flex is-justify-content-space-around" style="padding: 1rem;"><div class="level up">
+                                <p><b>Age:</b> {{ pet.age }}</p>
+                                <p><b>Weight:</b>  {{ pet.weight }}</p>
+                                <p><b>Sex:</b>  {{ pet.sex }}</p>
+                                <p><b>Breed:</b>  {{ pet.breed }}</p>
+                        </div>
+                            </div>
+                        <div class="tile is-child box is-flex is-justify-content-space-between">
+                        <div class="about"><h2 style="font-size: 2rem;">Meet {{ pet.name }}</h2>
+                            <p style="font-size:1.5rem;">{{ pet.description }}</p></div>
+          </div></div></div>
 
-        <div class="tile is-parent">
-          <div class="tile is-child is-4">
-    <dl class="row">
-        <dt>Age</dt><dd>{{ pet.age }}</dd>
-        <dt>Weight</dt><dd>{{ pet.weight }}</dd>
-        <dt>Sex</dt><dd>{{ pet.sex }}</dd>
-        <dt>Breed</dt><dd>{{ pet.breed }}</dd>
-    </dl>
-    </div>
-</div>
-</div>
 
-<div class="tile is-ancestor box">
-    <div class="tile is-parent is-12 is-vertical">
-        <div class="tile is-child">
-        <h2>Meet {{ pet.name }}</h2>
-        <p>{{ pet.description }}</p>
-        </div></div>
+        <div class="tile is-ancestor box">
+            <div class="tile is-parent is-12">
         <div class="tile is-child is-6">
         <dl><dt>Good with kids</dt>
         {% if pet.good_with_kids %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
@@ -42,9 +39,8 @@
         {% if pet.good_with_dogs %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
         <dt>Good with cats</dt>
         {% if pet.good_with_cats %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
-        <dt>Vaccinations up-to-date</dt></div>
+        <dt>Vaccinations up-to-date</dt>{% if pet.current_on_vac %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}</div>
         <div class="tile is-child is-6">
-        {% if pet.current_on_vac %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
         <dt>Spayed/Neutered</dt>
         {% if pet.spay_neuter %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
         <dt>Heartworm positive</dt>
@@ -53,8 +49,8 @@
         {% if pet.health_concerns %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
         <dt>Date added to our rescue</dt>
         <dd>{{ pet.date_created|date:"SHORT_DATE_FORMAT" }}</dd></dl></div>
-    </div>
+    </div></div>
 
-<div id="application-button"><a href="{% url 'application' %}" class="button">Apply to Adopt!</a></div>
+
 
 {% endblock %}

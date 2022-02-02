@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 {% if request.user.is_authenticated %}
-<h1>Review the application and update the status below!</h1> 
-  
-<div>
+<p class="lead">Review the application and update the status below</p> 
+
+
   <form class= "column" action="{% url 'application' %}" method="POST">
     {% csrf_token %}
     {{ form.name_of_field }}
@@ -146,12 +146,11 @@ Application Date Updated</label>
 </div>
 </div>
 
-
     <div>
       <button class="button is-info" type="submit">Apply changes</button>
     </div>
 </form>
 {% else %}
-<h1>Please log in to view this page.</h1>
+  <h1>Please <a href="/accounts/login/">login</a> to view this page.</h1>
 {% endif %}
 {% endblock %}
