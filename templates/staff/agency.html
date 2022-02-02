@@ -3,15 +3,125 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <h1>Update your rescue organization contact info and details below!</h1>
+
 <div>
-    <form action="{% url 'agency' %}" method="POST" enctype="multipart/form-data">
+    <form class="column" action="{% url 'agency' %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
-      <div>
-        <button type="submit">Submit Card</button>
-        <a href="{% url 'home' %}">Cancel</a>
-      </div>
-    </form>
+      {{ form.name_of_field }}
+      
+  
+  <div class="columns field is-multiline">
+  <div class="column">
+      <label class="label">
+      Name</label>
+      {{ form.name }}
+  </div>
+  <div class="column">
+    <label class="label">
+    Agency Owner</label>
+    {{ form.agency_owner }}
+</div>
+<div class="column">
+  <label class="label">
+  Phone Number</label>
+  {{ form.phone }}
+</div>
+<div class="column">
+  <label class="label">
+  E-Mail</label>
+  {{ form.email }}
+</div>
+<div class="column">
+  <label class="label">
+  Street Address</label>
+  {{ form.street_line_1 }}
+</div>
+<div class="column">
+  <label class="label">
+  Street Address 2</label>
+  {{ form.street_line_2 }}
+</div>
+<div class="column">
+  <label class="label">
+  City</label>
+  {{ form.city }}
+</div>
+<div class="column">
+  <label class="label">
+  State</label>
+  {{ form.state }}
+</div>
+<div class="column">
+  <label class="label">
+  Zipcode</label>
+  {{ form.zipcode }}
+</div>
+</div>
+   
+<div class="columns is-multiline">
+  <div class="column">
+    <label class="label">
+      Buisness Hours</label>
+      {{ form.business_hours }}
+  </div>
+  <div class="column">
+    <label class="label">
+      Website</label>
+      {{ form.website_info }}
+  </div>
+  </div>
+
+  <div class="columns is-multiline">
+  <div class="column">
+    <label class="label">
+      Description</label>
+      {{ form.description }}
+  </div>
+  <div class="column">
+    <label class="label">
+      About Us</label>
+      {{ form.about_us }}
+  </div>
+  <div class="column">
+    <label class="label">
+      Agency Mission</label>
+      {{ form.agency_mission }}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+      <label class="label">
+      Facebook</label>
+      {{ form.facebook_url }}
+  </div>
+  <div class="column">
+    <label class="label">
+    Twitter</label>
+    {{ form.twitter_url }}
+</div>
+</div>
+
+<div class="columns">
+<div class="column">
+  <label class="label">
+  Instagram</label>
+  {{ form.instagram_url }}
+</div>
+<div class="column">
+  <label class="label">
+  Logo</label>
+  {{ form.logo }}
+</div>
+</div>
+
+
+
+<div>
+  <button class="button is-info" type="submit">Submit Card</button>
+  <a href="{% url 'home' %}">Cancel</a>
+</div>
+</form>
   </div>
   {% else %}
   <h1>Please <a href="/accounts/login/">login</a> to view this page.</h1>

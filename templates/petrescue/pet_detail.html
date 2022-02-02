@@ -51,8 +51,8 @@
         {% if pet.heartworm_positive %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
         <dt>Additional health concerns</dt>
         {% if pet.health_concerns %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
-        <dt>Time in rescue</dt>
-        <dd>{{ pet.date_created|timeuntil:now }}</dd></dl></div>
+        <dt>Date added to our rescue</dt>
+        <dd>{{ pet.date_created|date:"SHORT_DATE_FORMAT" }}</dd></dl></div>
     </div>
 
 <div id="application-button"><a href="{% url 'application' %}" class="button">Apply to Adopt!</a></div>
