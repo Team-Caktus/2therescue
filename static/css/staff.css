@@ -278,24 +278,3 @@ table {
 td {
     padding: auto 1rem;
 }
-
-.open {
-    color: #158cba;
-    padding: .25rem;
-    font-size: 2rem;
-}
-.pending {
-    color: #001966;
-    padding: .25rem;
-    font-size: 2rem;
-}
-.approved {
-    color: #3DB39F;
-    padding: .25rem;
-    font-size: 2rem;
-}
-.denied {
-    color: #e83055;
-    padding: .25rem;
-    font-size: 2rem;
-}

@@ -2,15 +2,14 @@
 {% load static %}
 {% block content %}
 {% if request.user.is_authenticated %}
-<h1>Update your rescue organization contact info and details below!</h1>
+
+<p class="lead">Update your rescue organization contact info and details below!</p>
 
 <div>
-  <div class="column" action="{% url 'agency' %}" method="POST">
+    <form class="column" action="{% url 'agency' %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.name_of_field }}
-      
-  
-  <div class="columns field is-multiline">
+<div class="columns field is-multiline">
   <div class="column">
       <label class="label">
       Name</label>
@@ -127,5 +126,3 @@
   <h1>Please <a href="/accounts/login/">login</a> to view this page.</h1>
   {% endif %}
 {% endblock %}
-
-

@@ -2,140 +2,140 @@
 {% load static %}
 {% block content %}
 
+{% if request.user.is_authenticated %}
 <div>
-  <form class="column" action="{% url 'add_pet' %}" method="POST">
-      {% csrf_token %}
-      {{ form.name_of_field }}
+      <form action="{% url 'admin_pet_detail' pk=pet.pk %}" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+          {{ form.name_of_field }}
+          
       
-  
-  <div class="columns field is-grouped-multiline">
-  <div class="column">
-      <label class="label">
-      Name</label>
-      {{ form.name }}
-  </div>
-  <div class="column">
-      <label class="label">
-      Breed</label>
-      {{ form.breed }}
-  </div>
-  <div class="column">
-      <label class="label">
-      Age</label>
-      {{ form.age }}
-  </div>
+      <div class="columns field is-grouped-multiline">
       <div class="column">
           <label class="label">
-      Weight</label>
-      {{ form.weight }}
-  </div>
-  </div>
-  <br>
-  <div class="field">
-      <label class="label">
-      Photo</label>
-      {{ form.photo }}
-  </div>
-  <br>
-  <div class="columns">
-  
-  <div class="column">
-      <label class="label">
-      Status</label>
-      {{ form.status }}
-  </div>
-  <div class="column">
-      <label class="label">
-      Gender</label>
-      {{ form.sex }}
-  </div>
-  <div class="column">
-      <label class="label">
-      Age Group</label>
-      {{ form.age_group }}
-  </div>
-  <div class="column">
-      <label class="label">
-      Size</label>
-      {{ form.size }}
-  </div>
-  </div>
-  
-  <div class="column">
-      <label class="label">
-      Description</label>
-      {{ form.description }}
-  </div>
-  <div class="columns field is-grouped">
-  <div class="column">
-          <label class="label">
-      Up to Date Vaccinations?</label>
-      {{ form.current_on_vac }}
-          <label class="label">
-      Spayed or Neutered?</label>
-      {{ form.spay_neuter }}
-          <label class="label">
-      Good with Kids?</label>
-      {{ form.good_with_kids }}
+          Name</label>
+          {{ form.name }}
       </div>
-  
-  <div class="column">            
-          <label class="label">
-      Good with Dogs?</label>
-      {{ form.good_with_dogs }}
-          <label class="label">
-      Good with Cats?</label>
-      {{ form.good_with_cats }}
-          <label class="label">
-      Heartworm Positive?</label>
-      {{ form.heartworm_positive }}
-  </div>
-  </div>
-    
-  <div>
-      <label class="label">
-      Health Notes
-  </label>
-      {{ form.health_notes }}
-  </div>
-  
-  
-  <div class="columns is-grouped">
       <div class="column">
           <label class="label">
-      Foster Info
-  </label>
-      {{ form.foster_info }}
-  </div>
-  <div class="column">
+          Breed</label>
+          {{ form.breed }}
+      </div>
+      <div class="column">
           <label class="label">
-      Notes
-  </label>
-      {{ form.notes }}
-  </div>
-  </div>
-
-  <div class="columns">
-    <div class="column">
-      <label class="label">
-    Pet Added Date</label>
-    {{ pet.date_created|date:"SHORT_DATE_FORMAT" }}
+          Age</label>
+          {{ form.age }}
+      </div>
+          <div class="column">
+              <label class="label">
+          Weight</label>
+          {{ form.weight }}
+      </div>
+      </div>
+      <br>
+      <div class="field">
+          <label class="label">
+          Photo</label>
+          {{ form.photo }}
+      </div>
+      <br>
+      <div class="columns">
+      
+      <div class="column">
+          <label class="label">
+          Status</label>
+          {{ form.status }}
+      </div>
+      <div class="column">
+          <label class="label">
+          Gender</label>
+          {{ form.sex }}
+      </div>
+      <div class="column">
+          <label class="label">
+          Age Group</label>
+          {{ form.age_group }}
+      </div>
+      <div class="column">
+          <label class="label">
+          Size</label>
+          {{ form.size }}
+      </div>
+      </div>
+      
+      <div class="column">
+          <label class="label">
+          Description</label>
+          {{ form.description }}
+      </div>
+      <div class="columns field is-grouped">
+      <div class="column">
+              <label class="label">
+          Up to Date Vaccinations?</label>
+          {{ form.current_on_vac }}
+              <label class="label">
+          Spayed or Neutered?</label>
+          {{ form.spay_neuter }}
+              <label class="label">
+          Good with Kids?</label>
+          {{ form.good_with_kids }}
+          </div>
+      
+      <div class="column">            
+              <label class="label">
+          Good with Dogs?</label>
+          {{ form.good_with_dogs }}
+              <label class="label">
+          Good with Cats?</label>
+          {{ form.good_with_cats }}
+              <label class="label">
+          Heartworm Positive?</label>
+          {{ form.heartworm_positive }}
+      </div>
+      </div>
+        
+      <div>
+          <label class="label">
+          Health Notes
+      </label>
+          {{ form.health_notes }}
+      </div>
+      
+      
+      <div class="columns is-grouped">
+          <div class="column">
+              <label class="label">
+          Foster Info
+      </label>
+          {{ form.foster_info }}
+      </div>
+      <div class="column">
+              <label class="label">
+          Notes
+      </label>
+          {{ form.notes }}
+      </div>
+      </div>
+    
+      <div class="columns">
+        <div class="column">
+          <label class="label">
+        Pet Added Date</label>
+        {{ pet.date_created|date:"SHORT_DATE_FORMAT" }}
+        </div>
+        <div class="column">
+          <label class="label">
+        Pet Updated</label>
+        {{ pet.date_updated|date:"SHORT_DATE_FORMAT" }}
+        </div>
+        </div>
+      
+      
+        <div>
+          <button class="button is-info" type="submit">Update</button>
+        </div>
+      </form>
     </div>
-    <div class="column">
-      <label class="label">
-    Pet Updated</label>
-    {{ pet.date_updated|date:"SHORT_DATE_FORMAT" }}
-    </div>
-    </div>
-  
-  
-    <div>
-      <button class="button is-info" type="submit">Update</button>
-    </div>
-  </form>
-</div>
+    {% else %}
+  <h1>Please <a href="/accounts/login/">login</a> to view this page.</h1>
+{% endif %}
 {% endblock %}
-
-
-
-

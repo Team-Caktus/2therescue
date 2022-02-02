@@ -11,15 +11,16 @@ from django.db.models import Q
 
 
 def list_pets(request):
-    pets = Pet.objects.filter((Q(status="Available") | Q(status="Adoption Pending")))
+    pets = Pet.objects.filter((Q(status="Available") or Q(status="Adoption Pending")))
     agency = get_object_or_404(Agency)
     return render(request, "petrescue/homepage.html", {"pets": pets, "agency": agency})
 
 
 def search_by_sex_or_age_size(request):
+    agency = get_object_or_404(Agency)
     query = request.GET.get('q', None)
     results = Pet.objects.filter( Q(sex__icontains=query) | Q(size__icontains=query) | Q(age_group__icontains=query))
-    return render(request, "petrescue/homepage.html", {"pets": results})
+    return render(request, "petrescue/homepage.html", {"pets": results, "agency": agency})
 
 
 def pet_detail(request, pk):
@@ -58,7 +59,7 @@ def agency(request):
     if request.method == 'GET':
         form = AgencyForm(instance=agency)
     else:
-        form = AgencyForm(data=request.POST, instance=agency)
+        form = AgencyForm(request.POST, request.FILES)
         if form.is_valid():
             agency = form.save()
             return redirect(to='home')
