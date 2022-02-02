@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<container class="level">
+  <div class="level-left">
   <p class="lead">Click on a dog below for more details or to apply to adopt!</p>
+</div>
+  <div class="level-right">
   <form action="{% url 'search_by_sex_or_age_size' %}" method="GET">
-      <input type="text" name="q" placeholder="Search by age, sex or size">
-      <button type="submit" class="button">Search</button>
+      <div class="field has-addons">
+        <div class="control"> 
+    <input class="input" type="text" name="q" placeholder="Enter search term"></div> 
+    <div class="control"><button type="submit" class="button">Search</button>
+      </div>
+      </div>
     </form>
-  <div class="cards">    
-  <ul class="list-unstyled list-inline">
+  </div>
+</container>
 
+  <container class="cards">    
+  <ul class="list-unstyled list-inline">
     {% for pet in pets %}
     <li class="list-inline-item">
       <div class="card homepage-card">
@@ -38,7 +48,7 @@
     </li>
   {% endfor %}
 </ul>
-</div>
+</container>
 {% endblock %}
 
 

@@ -4,7 +4,7 @@
 {% if request.user.is_authenticated %}
 <h1>Update your rescue organization contact info and details below!</h1>
 <div>
-    <form action="{% url 'agency' %}" method="POST">
+    <form action="{% url 'agency' %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <div>

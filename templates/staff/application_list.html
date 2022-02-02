@@ -21,13 +21,13 @@
         {% for applicant in applicants %}
             <tr>
             {% if applicant.status == "Open" %}
-            <td><i class="fas fa-exclamation-circle open"></i></td>
+            <td><img src="{% static 'images/open.svg' %}" style="max-height:3rem;" alt="status-open"></td>
             {% elif applicant.status == "Pending" %}
-            <td><i class="fas fa-question-circle pending"></i></td>
+            <td><img src="{% static 'images/pending.svg' %}" style="max-height:3rem;" alt="status-pending"></td>
             {% elif applicant.status == "Approved" %}
-            <td><i class="fas fa-check-circle approved"></i></td>
+            <td><img src="{% static 'images/approved.svg' %}" style="max-height:3rem;" alt="status-approved"></td>
             {% else %}
-            <td><i class="fas fa-ban denied"></i></td>
+            <td><img src="{% static 'images/denied.svg' %}" style="max-height:3rem;" alt="status-denied"></td>
             {% endif %}
             <td>{{ applicant.status }}</td>
             <td>{{ applicant.pet_id }}</td>
