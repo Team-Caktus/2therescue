@@ -2,7 +2,16 @@
 {% load static %}
 {% block content %}
 {% if request.user.is_authenticated %}
-<p class="lead">Review your list of pets below</p>
+<div class="container is-flex-direction-column is-justify-content-space-around ml-0">
+<br />
+    <br />
+    <div class="block level is-flex-direction-row">
+    
+<p class="lead ml-1 level-left is-justify-content-space-evenly">Review your list of pets below:</p>
+<div class="level-right"><a href="{% url 'add_pet' %}" class="button is-primary">Add Pet</a></div>
+</div>
+
+<div class="block is-align-content-flex-start">
 <table class="table">
     <thead>
         <tr>
@@ -21,9 +30,9 @@
         <tbody>
     {% for pet in pets %}
         <tr>   
-        <td><img src="{{ pet.photo.url }}" class="img-thumbnail" alt="thumbnail-of-{{pet.name}}" style="max-height: 50px;"></td>
-        <td>{{ pet.status }}<td>
-        <a href="{% url 'admin_pet_detail' pk=pet.pk %}">{{ pet.name }}</a></td>
+        <td><img src="{{ pet.photo.url }}" class="img-thumbnail" alt="thumbnail-of-{{pet.name}}" style="height: 4rem; width: 4rem; object-fit:cover;"></td>
+        <td>{{ pet.status }}</td>
+        <td><a href="{% url 'admin_pet_detail' pk=pet.pk %}">{{ pet.name }}</a></td>
         <td>{{ pet.breed }}</td>
         <td>{{ pet.sex }}</td>
         <td>{{ pet.size }}</td>
@@ -33,12 +42,14 @@
     {% endfor %}
     </tbody>
     </table>
+</div>
+</div>
     {% else %}
     <h1>Please <a href="/accounts/login/">log in</a> to view this page.</h1>
     {% endif %}
 
 
-        <div id="application"><a href="{% url 'add_pet' %}" class="button is-info">Add Pet!</a></div>
+        <div id="application"></div>
         
     
 {% endblock %}

@@ -91,7 +91,7 @@ header a {
     word-wrap: normal;
     width: 20rem;    
     margin: .5rem .5rem .75rem .5rem;
-
+    border: 1px solid #3db39f;
 }
 
 .card .text {
@@ -119,6 +119,7 @@ header a {
 
 .card a {
     text-decoration: none;
+    color: #3db39f;
 }
 
 .card a::after {
@@ -246,4 +247,12 @@ footer {
 
 .up {
     font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.bg-blue {
+    background-color: #158bba58;
 }

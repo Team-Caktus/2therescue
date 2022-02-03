@@ -8,7 +8,7 @@
 <form class="column" action="{% url 'add_pet' %}" method="POST" enctype="multipart/form-data">
 
     {% csrf_token %}
-    {{ form.name_of_field }}
+
     
 
 <div class="columns field is-grouped-multiline">
@@ -122,10 +122,8 @@
     {{ form.notes }}
 </div>
 </div>
-
-
     <div>
-      <button class="button is-info" type="submit">Add Pet!</button>
+      <button class="button is-info" type="submit">Add</button>
     </div>
   </form>
 </div>

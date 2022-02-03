@@ -39,7 +39,7 @@ def AppView(request):
     # pet = get_object_or_404(Pet, pk=pk)
     form = AppForm(data=request.POST)
     if form.is_valid():
-        applicant = form.save(commit=False)
+        applicant = form.save()
         # applicant.pet_id = pet.pk
         applicant.save()
         return redirect(to="app_saved")
@@ -62,7 +62,7 @@ def agency(request):
         form = AgencyForm(request.POST, request.FILES)
         if form.is_valid():
             agency = form.save()
-            return redirect(to='home')
+            return redirect(to='pet_list')
 
     return render(request, "staff/agency.html", {"form": form, "agency": agency})
 
