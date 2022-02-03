@@ -9,14 +9,14 @@
                         <h2 style="font-size: 2rem;">Meet {{ pet.name }}</h2>
                             <p style="font-size:1.25rem;">{{ pet.description }}</p>
           </div>
-                        <div class="tile is-child box is-flex is-justify-content-space-between" style="padding: .5rem;"><div class="level up">
+                        <div class="tile is-child box is-flex is-justify-content-space-around" style="padding: .5rem;"><div class="level up">
                                 <p><b>Age:</b><br />{{ pet.age }}</p>
                                 <p><b>Weight:</b><br />{{ pet.weight }}</p>
                                 <p><b>Sex:</b><br />{{ pet.sex }}</p>
                                 <p><b>Breed:</b><br />{{ pet.breed }}</p>
                         </div>
                             </div>
-                          <a href="{% url 'application' %}"><div class="tile is-child is-flex is-justify-content-space-around box big-button">Apply to Adopt!</div></a></div>
+                          </div>
                           
                           <div class="tile is-4 is-parent is-vertical box">
                     <div class="tile is-child is-flex is-justify-content-space-around">
@@ -27,7 +27,7 @@
             {% if pet.heartworm_positive or pet.health_concerns %}<span class="tag tag1 is-large">Health Issues</span>
             {% else %}{% endif %}
           </div>
-                </div>
+                </div><a href="{% url 'application' %}"><div class="tile is-child is-flex is-justify-content-space-around box big-button">Apply to Adopt!</div></a>
             </div></div></div>
 
 
