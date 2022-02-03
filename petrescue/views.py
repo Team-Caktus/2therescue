@@ -62,7 +62,7 @@ def agency(request):
         form = AgencyForm(request.POST, request.FILES)
         if form.is_valid():
             agency = form.save()
-            return redirect(to='pet_list')
+            return redirect(to='applications')
 
     return render(request, "staff/agency.html", {"form": form, "agency": agency})
 

@@ -5,7 +5,7 @@
 <div class="box blue">
             <div class="tile is-ancestor">
                 <div class="tile is-4 is-parent is-vertical box">
-                    <div class="tile is-child is-flex is-justify-content-space-around">
+                    <div class="tile is-child is-flex is-justify-content-space-around mt-2">
             <div><img src="{{ pet.photo.url }}" class="pet-photo" alt="photo-of-{{pet.name}}" /></div></div>
                 <div class="tile is-child">
 <div class="tags" style="margin-bottom: 1rem;">
@@ -18,16 +18,16 @@
                 <div class="tile is-8 is-parent is-vertical">
                   <div class="tile is-child box is-flex is-justify-content-space-between">
                         <div class="about"><h2 style="font-size: 2rem;">Meet {{ pet.name }}</h2>
-                            <p style="font-size:1.5rem;">{{ pet.description }}</p></div>
+                            <p style="font-size:1.25rem;">{{ pet.description }}</p></div>
           </div>
-                        <div class="tile is-child box is-flex is-justify-content-space-around" style="padding: 1rem;"><div class="level up">
-                                <p><b>Age:</b> {{ pet.age }}</p>
-                                <p><b>Weight:</b>  {{ pet.weight }}</p>
-                                <p><b>Sex:</b>  {{ pet.sex }}</p>
-                                <p><b>Breed:</b>  {{ pet.breed }}</p>
+                        <div class="tile is-child box is-flex is-justify-content-space-between" style="padding: .5rem;"><div class="level up">
+                                <p><b>Age:</b><br />{{ pet.age }}</p>
+                                <p><b>Weight:</b><br />{{ pet.weight }}</p>
+                                <p><b>Sex:</b><br />{{ pet.sex }}</p>
+                                <p><b>Breed:</b><br />{{ pet.breed }}</p>
                         </div>
                             </div>
-                          <a href="{% url 'application' %}"><div class="tile is-child is-flex is-justify-content-space-around box big-button mb-1">Apply to Adopt!</div></a></div></div>
+                          <a href="{% url 'application' %}"><div class="tile is-child is-flex is-justify-content-space-around box big-button">Apply to Adopt!</div></a></div></div>
 
 
         <div class="tile is-ancestor box">
