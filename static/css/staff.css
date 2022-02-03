@@ -78,20 +78,11 @@ header a {
 }
 
 .button {
-	box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#599bb3;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
+    background-color: #3db39f;
+    color: white;
+    text-decoration: none;
 }
+
 /* 
 .button {
     background-color: #fff;
@@ -126,6 +117,12 @@ header a {
 
 .homepage-img {
     height: 15rem;
+    object-fit: cover;
+}
+
+.img-thumbnail {
+    height: 4rem;
+    width: 4rem;
     object-fit: cover;
 }
 
@@ -277,4 +274,8 @@ table {
 
 td {
     padding: auto 1rem;
+}
+
+a {
+    text-decoration: none !important;
 }

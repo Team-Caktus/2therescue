@@ -16,7 +16,10 @@
                 </div>
             </div>
                 <div class="tile is-8 is-parent is-vertical">
-                    <a href="{% url 'application' %}"><div class="tile is-child is-flex is-justify-content-space-around box big-button mb-1">Apply to Adopt!</div></a>
+                  <div class="tile is-child box is-flex is-justify-content-space-between">
+                        <div class="about"><h2 style="font-size: 2rem;">Meet {{ pet.name }}</h2>
+                            <p style="font-size:1.5rem;">{{ pet.description }}</p></div>
+          </div>
                         <div class="tile is-child box is-flex is-justify-content-space-around" style="padding: 1rem;"><div class="level up">
                                 <p><b>Age:</b> {{ pet.age }}</p>
                                 <p><b>Weight:</b>  {{ pet.weight }}</p>
@@ -24,10 +27,7 @@
                                 <p><b>Breed:</b>  {{ pet.breed }}</p>
                         </div>
                             </div>
-                        <div class="tile is-child box is-flex is-justify-content-space-between">
-                        <div class="about"><h2 style="font-size: 2rem;">Meet {{ pet.name }}</h2>
-                            <p style="font-size:1.5rem;">{{ pet.description }}</p></div>
-          </div></div></div>
+                          <a href="{% url 'application' %}"><div class="tile is-child is-flex is-justify-content-space-around box big-button mb-1">Apply to Adopt!</div></a></div></div>
 
 
         <div class="tile is-ancestor box">
@@ -49,7 +49,7 @@
         {% if pet.health_concerns %}<dd>Yes</dd>{% else %}<dd>No</dd>{% endif %}
         <dt>Date added to our rescue</dt>
         <dd>{{ pet.date_created|date:"SHORT_DATE_FORMAT" }}</dd></dl></div>
-    </div></div>
+    </div></div></div>
 
 
 

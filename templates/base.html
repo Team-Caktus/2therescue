@@ -11,12 +11,16 @@
   <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}" />
 </head>
-<body style="background-image: url({% static 'images/background.svg' %});">
+<body style="background-image: url('{% static 'images/background.svg' %}');">
     <header class="border-bottom header">
-    <nav class="navbar has-shadow is spaced level" style="background-color: transparent;" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-shadow is-spaced level" style="background-color: transparent;" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
   <a class="navbar-item" href="{% url 'list_pets' %}"><h1>{{ agency.name }}</h1></a>
-  </div>
+  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a></div>
   <div class="navbar-menu">
     <div class="navbar-start">
         <a class="navbar-item" href="{% url 'list_pets' %}" >Available Pets</a>
@@ -31,14 +35,13 @@
     </div>
   </nav>
     </header>
-  <div class="container">
-    {% block content %}{% endblock content %}
-  </div>
-
+    {% block content %}
+    {% endblock content %}
   <footer class="footer is-fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
     <ul class="list-unstyled">
         <li><i class="fas fa-paw"></i>{{ agency.name }}</li>
-        <li><i class="fas fa-paw"></i>{{ agency.phone }}</li>
+        <li><i class="fas fa-paw"></i>919.999.9999</li>
+        <li><i class="fas fa-paw"></i>{{ agency.email }}</li>
       </ul>
       <div id="social-media-links">
       <a href={{ agency.facebook_url }}><i class="fab fa-facebook"></i></a>
