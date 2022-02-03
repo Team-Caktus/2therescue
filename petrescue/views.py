@@ -42,7 +42,7 @@ def AppView(request):
         applicant = form.save()
         # applicant.pet_id = pet.pk
         applicant.save()
-        return redirect(to="app_saved")
+        return redirect(to="list_pets")
 
     return render(request, 'petrescue/application.html', {"form": form, "agency": agency})
 
